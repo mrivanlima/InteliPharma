@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteliPharma", "InteliPharma.csproj", "{E1BF1291-14DD-4A8B-A56F-A25023616988}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteliPharma.Library", "InteliPharma.Library.csproj", "{E1BF1291-14DD-4A8B-A56F-A25023616988}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "InteliPharma.DB", "..\InteliPharma.DB\InteliPharma.DB.sqlproj", "{ECC2A260-2DA8-4A56-9C7A-6922D83DF889}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteliPharma.API", "..\InteliPharma.API\InteliPharma.API.csproj", "{1230F008-834C-416D-BAE7-75F8A08490DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteliPharma.API", "..\InteliPharma.API\InteliPharma.API.csproj", "{1230F008-834C-416D-BAE7-75F8A08490DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

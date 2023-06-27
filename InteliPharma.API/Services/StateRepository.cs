@@ -28,10 +28,11 @@ namespace InteliPharma.API.Services
             cmd.Parameters.AddWithValue("Latitude", state.Latitude);
             cmd.Parameters.Add(outputStateId);
 
-            _connection.Open();
+            
 
             try
             {
+                _connection.Open();
                 var result = await cmd.ExecuteNonQueryAsync();
                 state.StateId = (byte)outputStateId.Value;
             }

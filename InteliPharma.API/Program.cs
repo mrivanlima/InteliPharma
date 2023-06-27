@@ -5,6 +5,11 @@ using InteliPharma.API.Services.DBServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers(options =>
+{
+    options.ReturnHttpNotAcceptable = true;
+}).AddXmlSerializerFormatters();
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -14,6 +19,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IDbConn, DbConnection>();
 builder.Services.AddScoped<IStateRepository, StateRepository>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
