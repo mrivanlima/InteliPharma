@@ -27,7 +27,7 @@ namespace InteliPharma.API.Controllers
         {
             var result = _mapper.Map<State>(state);
             var StateViewModel = await _stateRepository.CreateStateAsync(result);
-            return CreatedAtRoute("state", new { StateId = state.StateId }, _mapper.Map<StateViewModel>(result));
+            return CreatedAtRoute("state",  _mapper.Map<StateViewModel>(result));
         }
     }
 }
