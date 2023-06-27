@@ -2,7 +2,7 @@
 
 namespace InteliPharma.API.Services.DBServices
 {
-    public interface IDbConnection
+    public interface IDbConn
     {
         SqlConnection GetConnection();
     }

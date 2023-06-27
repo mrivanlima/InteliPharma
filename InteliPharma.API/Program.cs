@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IDbConnection, DbConnection>();
+builder.Services.AddScoped<IDbConn, DbConnection>();
 builder.Services.AddScoped<IStateRepository, StateRepository>();
 var app = builder.Build();
 
