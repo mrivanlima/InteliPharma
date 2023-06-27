@@ -1,5 +1,5 @@
 ﻿
-CREATE   PROCEDURE usp_api_StreetReadById
+CREATE   PROCEDURE App.usp_api_StreetReadById
 	@StreetId INT
 AS
 BEGIN

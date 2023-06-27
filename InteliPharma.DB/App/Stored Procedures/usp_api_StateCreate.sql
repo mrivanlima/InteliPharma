@@ -1,5 +1,5 @@
 ﻿
-CREATE   PROCEDURE usp_api_StateCreate
+CREATE   PROCEDURE App.usp_api_StateCreate
 	@StateName	VARCHAR(20),
 	@Longitude	DECIMAL(12,9) = NULL,
 	@Latitude	DECIMAL(12,9) = NULL,

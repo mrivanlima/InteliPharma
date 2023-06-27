@@ -1,5 +1,5 @@
 ﻿
-CREATE   PROCEDURE usp_api_CityUpdateById
+CREATE   PROCEDURE App.usp_api_CityUpdateById
 	@StateId	TINYINT,
 	@CityName	VARCHAR(20),
 	@Longitude	DECIMAL(12,9) = NULL,

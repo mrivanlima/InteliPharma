@@ -1,5 +1,5 @@
 ﻿
-CREATE   PROCEDURE usp_api_StreetDeleteById
+CREATE   PROCEDURE App.usp_api_StreetDeleteById
 	@StreetId		INT
 AS
 BEGIN

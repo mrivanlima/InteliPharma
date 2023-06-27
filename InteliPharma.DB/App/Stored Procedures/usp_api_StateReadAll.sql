@@ -1,6 +1,4 @@
-﻿
-
-CREATE   PROCEDURE usp_api_StateReadAll
+﻿CREATE   PROCEDURE App.usp_api_StateReadAll
 AS
 BEGIN
 	SET NOCOUNT ON;

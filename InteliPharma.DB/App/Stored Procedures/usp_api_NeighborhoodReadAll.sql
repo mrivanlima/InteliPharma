@@ -1,8 +1,4 @@
-﻿
--------------------------------------------------------------
--------------------------------------------------------------
-
-CREATE   PROCEDURE usp_api_NeighborhoodReadAll
+﻿CREATE   PROCEDURE App.usp_api_NeighborhoodReadAll
 AS
 BEGIN
 	SET NOCOUNT ON;

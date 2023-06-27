@@ -1,5 +1,5 @@
 ﻿
-CREATE   PROCEDURE usp_api_NeighborhoodDeleteById
+CREATE   PROCEDURE App.usp_api_NeighborhoodDeleteById
 	@NeighborhoodId	SMALLINT
 AS
 BEGIN

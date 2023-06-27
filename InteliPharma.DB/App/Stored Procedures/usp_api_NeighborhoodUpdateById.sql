@@ -1,5 +1,5 @@
 ﻿
-CREATE   PROCEDURE usp_api_NeighborhoodUpdateById
+CREATE   PROCEDURE App.usp_api_NeighborhoodUpdateById
 	@NeighborhoodId		SMALLINT,
 	@CityId				SMALLINT,
 	@NeighborhoodName	VARCHAR(50),

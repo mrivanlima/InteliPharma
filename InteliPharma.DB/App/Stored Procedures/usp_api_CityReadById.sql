@@ -1,5 +1,5 @@
 ﻿
-CREATE   PROCEDURE usp_api_CityReadById
+CREATE   PROCEDURE App.usp_api_CityReadById
 	@CityId SMALLINT
 AS
 BEGIN

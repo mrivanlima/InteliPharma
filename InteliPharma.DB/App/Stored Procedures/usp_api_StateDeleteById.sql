@@ -1,5 +1,5 @@
 ﻿
-CREATE   PROCEDURE usp_api_StateDeleteById
+CREATE   PROCEDURE App.usp_api_StateDeleteById
 	@StateId	TINYINT
 AS
 BEGIN

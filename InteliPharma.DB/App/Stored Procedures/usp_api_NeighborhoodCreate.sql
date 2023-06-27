@@ -1,5 +1,5 @@
 ﻿
-CREATE   PROCEDURE usp_api_NeighborhoodCreate
+CREATE   PROCEDURE App.usp_api_NeighborhoodCreate
 	@NeighborhoodId		SMALLINT = NULL OUTPUT,
 	@CityId				SMALLINT,
 	@NeighborhoodName	VARCHAR(50),

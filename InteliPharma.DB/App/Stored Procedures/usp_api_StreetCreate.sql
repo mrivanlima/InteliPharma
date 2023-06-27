@@ -1,6 +1,6 @@
 ﻿
 
-CREATE   PROCEDURE usp_api_StreetCreate
+CREATE   PROCEDURE App.usp_api_StreetCreate
 	@StreetId		INT,
 	@NeighborhoodId	SMALLINT,
 	@StreetName		VARCHAR(50),

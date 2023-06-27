@@ -1,5 +1,5 @@
 ﻿
-CREATE   PROCEDURE usp_api_StateReadById
+CREATE   PROCEDURE App.usp_api_StateReadById
 	@StateId TINYINT
 AS
 BEGIN

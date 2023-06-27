@@ -1,7 +1,5 @@
 ﻿
------------------------------------------------------------
------------------------------------------------------------
-CREATE   PROCEDURE usp_api_CityReadAll
+CREATE   PROCEDURE App.usp_api_CityReadAll
 AS
 BEGIN
 	SET NOCOUNT ON;

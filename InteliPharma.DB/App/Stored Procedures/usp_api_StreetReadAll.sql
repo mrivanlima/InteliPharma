@@ -1,4 +1,4 @@
-﻿CREATE   PROCEDURE usp_api_StreetReadAll
+﻿CREATE   PROCEDURE App.usp_api_StreetReadAll
 AS
 BEGIN
 	SET NOCOUNT ON;
