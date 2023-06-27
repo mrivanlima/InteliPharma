@@ -1,5 +1,6 @@
 
 
+using InteliPharma.API.Services;
 using InteliPharma.API.Services.DBServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IDbConnection, DbConnection>();
+builder.Services.AddScoped<IStateRepository, StateRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
