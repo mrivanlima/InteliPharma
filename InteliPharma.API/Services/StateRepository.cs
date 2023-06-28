@@ -87,58 +87,97 @@ namespace InteliPharma.API.Services
             return state;
         }
 
-
-
-        //public async Task<User> GetUserAsyncById(int userId)
-        //{
-        //    SqlDataReader sqlDr = null;
-        //    SqlCommand command = new SqlCommand("[dbo].[sp_API_GetUserById]", connection);
-        //    command.CommandType = CommandType.StoredProcedure;
-        //    command.Parameters.Add(new SqlParameter("@UserID", userId));
-
-        //    connection.Open();
-        //    sqlDr = await command.ExecuteReaderAsync();
-
-        //    var user = new User();
-        //    while (sqlDr.Read())
-        //    {
-        //        user = new User();
-        //        user.UserId = (int)sqlDr["UserId"];
-        //        user.FirstName = (string)sqlDr["FirstName"];
-        //        user.LastName = (string)sqlDr["LastName"];
-        //        user.BirthDate = (DateTime)sqlDr["BirthDate"];// ? null : (DateTime)sqlDr["BirthDate"];
-        //        user.Email = (string)sqlDr["Email"];
-        //        user.cpf = (string)sqlDr["cpf"];
-        //        user.Gender = (Boolean)sqlDr["Gender"];
-        //        user.PhoneNumber = (string)sqlDr["LastName"];
-        //    }
-        //    connection.Close();
-        //    sqlDr.Close();
-        //    return user;
-
-        //}
-
-
-
-
-        public Task<State> DeleteStateAsyncById(byte stateId)
+        public async Task<IEnumerable<State>> GetAllStatesAsync()
         {
-            throw new NotImplementedException();
+            State state;
+            SqlDataReader? sqlDr = null;
+            ICollection<State> states = new List<State>();
+            SqlCommand cmd = new SqlCommand("[App].[usp_api_StateReadAll]", _connection);
+
+            try
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                _connection.Open();
+
+                sqlDr = await cmd.ExecuteReaderAsync();
+
+                while (sqlDr.Read())
+                {
+                    state = new State();
+                    state.StateId = (byte)sqlDr["StateId"];
+                    state.StateName = (string)sqlDr["StateName"];
+                    state.Longitude = (decimal)sqlDr["Longitude"];
+                    state.Latitude = (decimal)sqlDr["Latitude"];
+                    states.Add(state);  
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                _connection.Close();
+                if (sqlDr != null)
+                {
+                    sqlDr.Close();
+                }
+            }
+            return states;
         }
 
-        public Task<IEnumerable<State>> GetAllStatesAsync()
+        public async Task<State> UpdateStateAsyncById(State state)
         {
-            throw new NotImplementedException();
+            SqlCommand cmd;
+
+            try
+            {
+                cmd = new SqlCommand("[App].[usp_api_StateUpdateById]", _connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("StateId", state.StateId);
+                cmd.Parameters.AddWithValue("StateName", state.StateName);
+                cmd.Parameters.AddWithValue("Longitude", state.Longitude);
+                cmd.Parameters.AddWithValue("Latitude", state.Latitude);
+                _connection.Open();
+                var result = await cmd.ExecuteNonQueryAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
+            return state;
         }
 
-        //public Task<State> GetStateAsyncById(byte stateId)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
-        public Task<State> UpdateStateAsyncById(byte stateId)
+        public async Task<bool> DeleteStateAsyncById(byte stateId)
         {
-            throw new NotImplementedException();
+            SqlCommand cmd;
+            bool isDeleted = true;
+
+            try
+            {
+                cmd = new SqlCommand("[App].[usp_api_StateDeleteById]", _connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("StateId", stateId);
+
+                _connection.Open();
+                var result = await cmd.ExecuteNonQueryAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                isDeleted = false;
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
+            return isDeleted;
         }
     }
 }

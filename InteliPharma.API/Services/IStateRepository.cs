@@ -7,8 +7,8 @@ namespace InteliPharma.API.Services
         Task<State> CreateStateAsync(State state);
         Task<IEnumerable<State>> GetAllStatesAsync();
         Task<State> GetStateAsyncById(byte stateId);
-        Task<State> UpdateStateAsyncById(byte stateId);
-        Task<State> DeleteStateAsyncById(byte stateId);
+        Task<State> UpdateStateAsyncById(State state);
+        Task<bool> DeleteStateAsyncById(byte stateId);
 
     }
 }

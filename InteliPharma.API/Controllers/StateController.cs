@@ -23,7 +23,7 @@ namespace InteliPharma.API.Controllers
         }
 
         [HttpGet("{stateId}", Name = "estado")]
-        public async Task<ActionResult<StateViewModel>> GetUser(byte stateId)
+        public async Task<ActionResult<StateViewModel>> GetStateById(byte stateId)
         {
             var state = await _stateRepository.GetStateAsyncById(stateId);
             if (state.StateId < 1)
@@ -31,6 +31,17 @@ namespace InteliPharma.API.Controllers
                 return NotFound();
             }
             return Ok(_mapper.Map<StateViewModel>(state));
+        }
+
+        [HttpGet(Name = "estados")]
+        public async Task<ActionResult<IEnumerable<StateViewModel>>> GetStatesAll()
+        {
+            var states = await _stateRepository.GetAllStatesAsync();
+            if (states.Count() < 1)
+            {
+                return NotFound();
+            }
+            return Ok(_mapper.Map<IEnumerable<StateViewModel>>(states));
         }
 
         [HttpPost]
