@@ -69,6 +69,8 @@
     <Folder Include="External" />
     <Folder Include="External\Coordinates" />
     <Folder Include="App\Functions\" />
+    <Folder Include="Imp" />
+    <Folder Include="Imp\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Tables\UserRole.sql" />
@@ -163,14 +165,21 @@
     <Build Include="App\Stored Procedures\usp_api_StreetUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ZipCodeCreate.sql" />
     <Build Include="App\Functions\replace_special_char.sql" />
+    <Build Include="Imp\Tables\ZipGeoLocation.sql" />
+    <Build Include="Security\Imp.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
+    <None Include="External\AC_ZipCodes.txt" />
+    <None Include="External\BR_Localidades_2010_v1.txt" />
+    <None Include="External\Cep_GeoLocation.txt" />
+    <None Include="External\DF_ZipCodes.txt" />
+    <None Include="External\GO_ZipCodes.txt" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="FeedDb.sql" />
+    <None Include="FeedDb.sql" />
   </ItemGroup>
   <ItemGroup>
-    <PreDeploy Include="Script.PreDeployment.sql" />
+    <None Include="Script.PreDeployment.sql" />
   </ItemGroup>
 </Project>

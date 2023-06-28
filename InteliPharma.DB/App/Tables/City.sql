@@ -6,6 +6,6 @@
     [Latitude]  DECIMAL (12, 9) NULL,
     CONSTRAINT [PK_City] PRIMARY KEY CLUSTERED ([CityId] ASC),
     CONSTRAINT [FK_CityState] FOREIGN KEY ([StateId]) REFERENCES [App].[State] ([StateId]),
-    CONSTRAINT [UQ_CityName] UNIQUE NONCLUSTERED ([CityName] ASC)
+    CONSTRAINT [UQ_CityName] UNIQUE NONCLUSTERED ([CityName] ASC, [StateId])
 );
 
