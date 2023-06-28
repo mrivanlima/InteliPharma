@@ -34,6 +34,7 @@ BEGIN
 			INSERT INTO App.[State]
 			(
 				StateName,
+				StateNameASCII,
 				StateAbbreviation,
 				Longitude,
 				Latitude
@@ -41,6 +42,7 @@ BEGIN
 			VALUES
 			(
 				@StateName,
+				App.replace_special_char(@StateName),
 				@StateAbbreviation,
 				@Longitude,
 				@Latitude	

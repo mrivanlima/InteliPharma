@@ -66,6 +66,9 @@
     <Folder Include="Admin\" />
     <Folder Include="Admin\Stored Procedures\" />
     <Folder Include="App\Stored Procedures" />
+    <Folder Include="External" />
+    <Folder Include="External\Coordinates" />
+    <Folder Include="App\Functions\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Tables\UserRole.sql" />
@@ -159,8 +162,15 @@
     <Build Include="App\Stored Procedures\usp_api_StreetReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_StreetUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ZipCodeCreate.sql" />
+    <Build Include="App\Functions\replace_special_char.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="FeedDb.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Script.PreDeployment.sql" />
   </ItemGroup>
 </Project>

@@ -29,6 +29,7 @@ BEGIN
 			UPDATE s
 				SET StateName = @StateName,
 				    StateAbbreviation = @StateAbbreviation,
+					StateNameASCII = App.replace_special_char(@StateName),
 				    Longitude = @Longitude,
 					Latitude = @Latitude
 			FROM App.[State] s 
