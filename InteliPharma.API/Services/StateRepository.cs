@@ -29,6 +29,7 @@ namespace InteliPharma.API.Services
                 cmd = new SqlCommand("[App].[usp_api_StateCreate]", _connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("StateName", state.StateName);
+                cmd.Parameters.AddWithValue("StateName", state.StateAbbreviation);
                 cmd.Parameters.AddWithValue("Longitude", state.Longitude);
                 cmd.Parameters.AddWithValue("Latitude", state.Latitude);
                 cmd.Parameters.Add(outputStateId);
@@ -67,6 +68,7 @@ namespace InteliPharma.API.Services
                 {
                     state.StateId = stateId;
                     state.StateName = (string)sqlDr["StateName"];
+                    state.StateAbbreviation = (string)sqlDr["StateAbbreviation"];
                     state.Longitude = (decimal)sqlDr["Longitude"];
                     state.Latitude = (decimal)sqlDr["Latitude"];
                 }
@@ -105,6 +107,7 @@ namespace InteliPharma.API.Services
                 {
                     state = new State();
                     state.StateId = (byte)sqlDr["StateId"];
+                    state.StateAbbreviation = (string)sqlDr["StateAbbreviation"];
                     state.StateName = (string)sqlDr["StateName"];
                     state.Longitude = (decimal)sqlDr["Longitude"];
                     state.Latitude = (decimal)sqlDr["Latitude"];
@@ -137,6 +140,7 @@ namespace InteliPharma.API.Services
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("StateId", state.StateId);
                 cmd.Parameters.AddWithValue("StateName", state.StateName);
+                cmd.Parameters.AddWithValue("StateAbbreviation", state.StateAbbreviation);
                 cmd.Parameters.AddWithValue("Longitude", state.Longitude);
                 cmd.Parameters.AddWithValue("Latitude", state.Latitude);
                 _connection.Open();

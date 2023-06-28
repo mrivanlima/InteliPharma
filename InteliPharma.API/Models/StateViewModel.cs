@@ -4,6 +4,7 @@
     {
         public byte StateId { get; set; }
         public string StateName { get; set; } = string.Empty;
+        public string StateAbbreviation { get; set; } = string.Empty;
         public decimal Longitude { get; set; }
         public decimal Latitude { get; set; }
     }

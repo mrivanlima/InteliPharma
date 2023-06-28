@@ -160,4 +160,7 @@
     <Build Include="App\Stored Procedures\usp_api_StreetUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ZipCodeCreate.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="InteliPharma.DB.publish.xml" />
+  </ItemGroup>
 </Project>
