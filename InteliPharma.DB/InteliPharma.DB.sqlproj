@@ -152,7 +152,6 @@
     <Build Include="App\Stored Procedures\usp_api_StateDeleteById.sql" />
     <Build Include="App\Stored Procedures\usp_api_StateReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_StateReadById.sql" />
-    <Build Include="App\Stored Procedures\usp_api_StateUpdate.sql" />
     <Build Include="App\Stored Procedures\usp_api_StateUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_StreetCreate.sql" />
     <Build Include="App\Stored Procedures\usp_api_StreetDeleteById.sql" />

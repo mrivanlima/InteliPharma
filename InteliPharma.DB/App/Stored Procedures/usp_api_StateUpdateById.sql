@@ -1,6 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_StateUpdateById
 	@StateName	VARCHAR(20),
+	@StateAbbreviation CHAR(2),
 	@Longitude	DECIMAL(12,9) = NULL,
 	@Latitude	DECIMAL(12,9) = NULL,
 	@StateId	TINYINT
@@ -27,6 +28,7 @@ BEGIN
 
 			UPDATE s
 				SET StateName = @StateName,
+				    StateAbbreviation = @StateAbbreviation,
 				    Longitude = @Longitude,
 					Latitude = @Latitude
 			FROM App.[State] s 

@@ -1,6 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_StateCreate
 	@StateName	VARCHAR(20),
+	@StateAbbreviation CHAR(2),
 	@Longitude	DECIMAL(12,9) = NULL,
 	@Latitude	DECIMAL(12,9) = NULL,
 	@StateId	TINYINT = NULL OUTPUT
@@ -33,12 +34,14 @@ BEGIN
 			INSERT INTO App.[State]
 			(
 				StateName,
+				StateAbbreviation,
 				Longitude,
 				Latitude
 			)
 			VALUES
 			(
 				@StateName,
+				@StateAbbreviation,
 				@Longitude,
 				@Latitude	
 			)
