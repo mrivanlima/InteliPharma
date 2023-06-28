@@ -29,7 +29,7 @@ namespace InteliPharma.API.Services
                 cmd = new SqlCommand("[App].[usp_api_StateCreate]", _connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("StateName", state.StateName);
-                cmd.Parameters.AddWithValue("StateName", state.StateAbbreviation);
+                cmd.Parameters.AddWithValue("StateAbbreviation", state.StateAbbreviation);
                 cmd.Parameters.AddWithValue("Longitude", state.Longitude);
                 cmd.Parameters.AddWithValue("Latitude", state.Latitude);
                 cmd.Parameters.Add(outputStateId);
