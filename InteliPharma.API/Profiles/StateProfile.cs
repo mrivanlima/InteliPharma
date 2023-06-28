@@ -6,7 +6,8 @@ namespace InteliPharma.API.Profiles
 {
     public class StateProfile : Profile
     {
-        public StateProfile() { 
+        public StateProfile() 
+        { 
             CreateMap<State, StateViewModel>().ReverseMap();
         }
     }

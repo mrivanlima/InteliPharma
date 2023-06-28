@@ -44,7 +44,7 @@ namespace InteliPharma.API.Controllers
             return Ok(_mapper.Map<IEnumerable<StateViewModel>>(states));
         }
 
-        [HttpPost]
+        [HttpPost(Name ="AdicionarEstado")]
         public async Task<ActionResult<StateViewModel>> CreateState(StateViewModel state)
         {
             var result = _mapper.Map<State>(state);
@@ -54,6 +54,30 @@ namespace InteliPharma.API.Controllers
                 return BadRequest();
             }
             return CreatedAtRoute("estado", new { StateId = result.StateId },  _mapper.Map<StateViewModel>(result));
+        }
+
+        [HttpPut(Name = "AtualizarEstado")]
+        public async Task<ActionResult<StateViewModel>> UpdateState(StateViewModel state)
+        {
+            var result = _mapper.Map<State>(state);
+            var StateViewModel = await _stateRepository.UpdateStateAsyncById(result);
+            if (StateViewModel == null)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
+
+        [HttpDelete(Name = "DeletarEstado")]
+        public async Task<ActionResult<StateViewModel>> DeleteState(byte stateId)
+        {
+            //var result = _mapper.Map<State>(state);
+            var StateViewModel = await _stateRepository.DeleteStateAsyncById(stateId);
+            if (!StateViewModel)
+            {
+                return NotFound();
+            }
+            return Ok();
         }
     }
 }
