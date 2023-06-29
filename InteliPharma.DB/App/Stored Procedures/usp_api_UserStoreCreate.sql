@@ -31,7 +31,7 @@ BEGIN
 			)
 
 			SET @UserStoreId = SCOPE_IDENTITY();
-			PRINT CONCAT(@UserId, ' ', 'added sucessfully!');
+			PRINT CONCAT(@UserStoreId, ' ', 'added sucessfully!');
 		COMMIT TRANSACTION @StoredProcedureName
 	END TRY 
 
