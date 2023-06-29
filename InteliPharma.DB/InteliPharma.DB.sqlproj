@@ -167,6 +167,8 @@
     <Build Include="App\Functions\replace_special_char.sql" />
     <Build Include="Imp\Tables\ZipGeoLocation.sql" />
     <Build Include="Security\Imp.sql" />
+    <Build Include="Imp\Tables\Cep_GeoLocation.sql" />
+    <Build Include="Imp\Tables\Address.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />

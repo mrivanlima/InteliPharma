@@ -1,0 +1,7 @@
+﻿CREATE TABLE [Imp].[Cep_GeoLocation] (
+    [POSTCODE]   NVARCHAR (MAX) NULL,
+    [LON]        NVARCHAR (MAX) NULL,
+    [LAT]        NVARCHAR (MAX) NULL,
+    [CD_GEOCODI] NVARCHAR (MAX) NULL
+);
+

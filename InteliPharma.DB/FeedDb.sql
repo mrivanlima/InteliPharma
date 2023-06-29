@@ -253,4 +253,19 @@ FROM OPENJSON(@json)
 		Longitude DECIMAL (10,4) '$.long'
 	)
 ORDER BY 1;
+GO
+
+INSERT INTO [db_a9b211_intelipharma].[App].[ZipCode]
+(
+	 [ZipCodeCode]
+	,[Longitude]
+	,[Latitude]
+)
+
+SELECT DISTINCT
+     REPLACE([POSTCODE], '-', '') [ZipCodeCode]
+	,TRY_CONVERT(DECIMAL(18,5), [LON]) AS Longitude
+	,TRY_CONVERT(DECIMAL(18,5),[LAT])
+FROM [db_a9b211_intelipharma].[Imp].[Cep_GeoLocation]
+ORDER BY 1
 
