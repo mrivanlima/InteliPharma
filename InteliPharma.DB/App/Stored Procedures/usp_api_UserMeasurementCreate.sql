@@ -2,7 +2,7 @@
 CREATE   PROCEDURE App.usp_api_UserMeasurementCreate
 	@UserMeasurementId		INT,
 	@UserId					INT,
-	@MeasurememntId			INT,
+	@MeasurementId			INT,
 	@UserMeasurementDate	DATE
 AS
 BEGIN
@@ -25,7 +25,7 @@ BEGIN
 			VALUES
 			(
 				@UserId,
-				@MeasurememntId,
+				@MeasurementId,
 				@UserMeasurementDate
 			)
 
