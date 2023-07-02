@@ -27,30 +27,30 @@ namespace InteliPharma.Console
             //    remaining = ceps.Except(zips).ToList();
 
             //}
-            foreach (string file in Directory.EnumerateFiles(path, "*.json"))
-            {
-                string contents = File.ReadAllText(file);
-                CepInfo cepInfo = JsonSerializer.Deserialize<CepInfo>(contents);
+            //foreach (string file in Directory.EnumerateFiles(path, "*.json"))
+            //{
+            //    string contents = File.ReadAllText(file);
+            //    CepInfo cepInfo = JsonSerializer.Deserialize<CepInfo>(contents);
 
-                ZipCodeInfo zipCodeInfo = new ZipCodeInfo();
-                zipCodeInfo.cep = cepInfo.cep;
-                zipCodeInfo.logradouro = cepInfo.logradouro;
-                zipCodeInfo.complemento = cepInfo.complemento;
-                zipCodeInfo.bairro = cepInfo.bairro;
-                zipCodeInfo.localidade = cepInfo.localidade;
-                zipCodeInfo.uf = cepInfo.uf;
-                zipCodeInfo.ibge = cepInfo.ibge;
-                zipCodeInfo.gia = cepInfo.gia;
-                zipCodeInfo.ddd = cepInfo.ddd;
-                zipCodeInfo.siafi = cepInfo.siafi;
+            //    ZipCodeInfo zipCodeInfo = new ZipCodeInfo();
+            //    zipCodeInfo.cep = cepInfo.cep;
+            //    zipCodeInfo.logradouro = cepInfo.logradouro;
+            //    zipCodeInfo.complemento = cepInfo.complemento;
+            //    zipCodeInfo.bairro = cepInfo.bairro;
+            //    zipCodeInfo.localidade = cepInfo.localidade;
+            //    zipCodeInfo.uf = cepInfo.uf;
+            //    zipCodeInfo.ibge = cepInfo.ibge;
+            //    zipCodeInfo.gia = cepInfo.gia;
+            //    zipCodeInfo.ddd = cepInfo.ddd;
+            //    zipCodeInfo.siafi = cepInfo.siafi;
 
 
-                if (dbContext != null)
-                {
-                    dbContext.zipCodeInfo.Add(zipCodeInfo);
-                    dbContext.SaveChanges();
-                }
-            }
+            //    if (dbContext != null)
+            //    {
+            //        dbContext.zipCodeInfo.Add(zipCodeInfo);
+            //        dbContext.SaveChanges();
+            //    }
+            //}
 
         }
     }

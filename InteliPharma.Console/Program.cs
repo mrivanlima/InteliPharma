@@ -23,43 +23,79 @@ var dbContext = new ApplicationDbContext(dbOptions);
 
 //}
 
-List<string> zips = dbContext.zipCodeInfo.Select(e => e.cep).ToList();
+List<string> zips = dbContext.zipCodeInfo.Select(e => e.cep.Remove(5, 1)).ToList();
 
-int count = 0;
-foreach (string file in Directory.EnumerateFiles(path, "*.json"))
+string contentss = File.ReadAllText(@"C:\Users\IvanLima\Documents\cep.json");
+List<CepInfo> ceps = JsonSerializer.Deserialize<List<CepInfo>>(contentss);
+
+
+int counter = 0;
+foreach(var c in ceps)
 {
-    string contents = File.ReadAllText(file);
-    CepInfo cepInfo = JsonSerializer.Deserialize<CepInfo>(contents);
-
-    Console.WriteLine(cepInfo.cep +  " Counter " + ++count);
-    if (zips.Contains(cepInfo.cep))
+    Console.WriteLine(c.cep + " Counter " + ++counter);
+    if (zips.Contains(c.cep))
     {
         continue;
     }
-
     else
     {
         ZipCodeInfo zipCodeInfo = new ZipCodeInfo();
-        zipCodeInfo.cep = cepInfo.cep;
-        zipCodeInfo.logradouro = cepInfo.logradouro;
-        zipCodeInfo.complemento = cepInfo.complemento;
-        zipCodeInfo.bairro = cepInfo.bairro;
-        zipCodeInfo.localidade = cepInfo.localidade;
-        zipCodeInfo.uf = cepInfo.uf;
-        zipCodeInfo.ibge = cepInfo.ibge;
-        zipCodeInfo.gia = cepInfo.gia;
-        zipCodeInfo.ddd = cepInfo.ddd;
-        zipCodeInfo.siafi = cepInfo.siafi;
-
-
+        zipCodeInfo.cep = c.cep;
+        zipCodeInfo.logradouro = c.rua;
+        zipCodeInfo.bairro = c.bairro;
+        zipCodeInfo.localidade = c.cidade;
+        zipCodeInfo.uf = c.estado;
+        
 
         if (dbContext != null)
+        {
+            dbContext.zipCodeInfo.Add(zipCodeInfo);
+        }
+
+        if (dbContext != null && counter % 5000 == 0)
         {
             dbContext.zipCodeInfo.Add(zipCodeInfo);
             dbContext.SaveChanges();
         }
     }
 }
+
+
+//int count = 0;
+//foreach (string file in Directory.EnumerateFiles(path, "*.json"))
+//{
+//    string contents = File.ReadAllText(file);
+//    CepInfo cepInfo = JsonSerializer.Deserialize<CepInfo>(contents);
+
+//    Console.WriteLine(cepInfo.cep +  " Counter " + ++count);
+//    if (zips.Contains(cepInfo.cep))
+//    {
+//        continue;
+//    }
+
+//    else
+//    {
+//        ZipCodeInfo zipCodeInfo = new ZipCodeInfo();
+//        zipCodeInfo.cep = cepInfo.cep;
+//        zipCodeInfo.logradouro = cepInfo.logradouro;
+//        zipCodeInfo.complemento = cepInfo.complemento;
+//        zipCodeInfo.bairro = cepInfo.bairro;
+//        zipCodeInfo.localidade = cepInfo.localidade;
+//        zipCodeInfo.uf = cepInfo.uf;
+//        zipCodeInfo.ibge = cepInfo.ibge;
+//        zipCodeInfo.gia = cepInfo.gia;
+//        zipCodeInfo.ddd = cepInfo.ddd;
+//        zipCodeInfo.siafi = cepInfo.siafi;
+
+
+
+//        if (dbContext != null)
+//        {
+//            dbContext.zipCodeInfo.Add(zipCodeInfo);
+//            dbContext.SaveChanges();
+//        }
+//    }
+//}
 
 
 

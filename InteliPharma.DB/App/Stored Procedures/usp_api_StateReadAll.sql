@@ -7,6 +7,7 @@ BEGIN
 	SELECT StateId,
 	       StateName, 
 	       Longitude,
-		   Latitude
+		   Latitude,
+		   StateAbbreviation
 	FROM App.[State];
 END;

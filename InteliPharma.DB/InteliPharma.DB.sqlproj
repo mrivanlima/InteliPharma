@@ -71,6 +71,7 @@
     <Folder Include="App\Functions\" />
     <Folder Include="Imp" />
     <Folder Include="Imp\Tables" />
+    <Folder Include="Imp\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Tables\UserRole.sql" />
@@ -169,6 +170,12 @@
     <Build Include="Security\Imp.sql" />
     <Build Include="Imp\Tables\Cep_GeoLocation.sql" />
     <Build Include="Imp\Tables\Address.sql" />
+    <Build Include="Imp\Tables\ZipCodeInfo.sql" />
+    <Build Include="Imp\Tables\Conformidade.sql" />
+    <Build Include="Imp\Tables\Cidades.sql" />
+    <Build Include="Imp\Stored Procedures\usp_ZipCodeInfoCreate.sql" />
+    <Build Include="Imp\Stored Procedures\usp_NeighborhoodImport.sql" />
+    <Build Include="Imp\Stored Procedures\usp_CityImport.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />

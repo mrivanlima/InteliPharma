@@ -8,7 +8,8 @@ BEGIN
 
 	SELECT StateName, 
 	       Longitude,
-		   Latitude
+		   Latitude,
+		   StateAbbreviation
 	FROM App.[State]
 	where StateId = @StateId;
 END;

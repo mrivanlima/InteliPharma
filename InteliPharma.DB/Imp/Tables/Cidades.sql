@@ -1,0 +1,7 @@
+﻿CREATE TABLE [Imp].[Cidades] (
+    [GEOCODIGO_MUNICIPIO] VARCHAR (400) NULL,
+    [NOME_MUNICIPIO]      VARCHAR (400) NULL,
+    [LONGITUDE]           VARCHAR (400) NULL,
+    [LATITUDE]            VARCHAR (400) NULL
+);
+
