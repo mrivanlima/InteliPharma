@@ -176,6 +176,7 @@
     <Build Include="Imp\Stored Procedures\usp_ZipCodeInfoCreate.sql" />
     <Build Include="Imp\Stored Procedures\usp_NeighborhoodImport.sql" />
     <Build Include="Imp\Stored Procedures\usp_CityImport.sql" />
+    <Build Include="Imp\Stored Procedures\usp_StreetImport.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
