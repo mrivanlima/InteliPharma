@@ -177,10 +177,7 @@
     <Build Include="Imp\Stored Procedures\usp_NeighborhoodImport.sql" />
     <Build Include="Imp\Stored Procedures\usp_CityImport.sql" />
     <Build Include="Imp\Stored Procedures\usp_StreetImport.sql" />
-    <Build Include="App\Stored Procedures\New.sql" />
-    <Build Include="App\Stored Procedures\old.sql" />
     <Build Include="App\Stored Procedures\usp_api_ZipCodeDeleteById.sql" />
-    <Build Include="App\Stored Procedures\teste.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
