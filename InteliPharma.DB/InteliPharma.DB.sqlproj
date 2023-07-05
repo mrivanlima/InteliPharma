@@ -165,9 +165,6 @@
     <Build Include="App\Stored Procedures\usp_api_StreetReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_StreetUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ZipCodeCreate.sql" />
-    <Build Include="App\Stored Procedures\usp_api_ZipCodeReadAll.sql" />
-    <Build Include="App\Stored Procedures\usp_api_ZipCodeReadById.sql" />
-    <Build Include="App\Stored Procedures\usp_api_ZipCodeUpdateById.sql" />
     <Build Include="App\Functions\replace_special_char.sql" />
     <Build Include="Imp\Tables\ZipGeoLocation.sql" />
     <Build Include="Security\Imp.sql" />
@@ -181,6 +178,13 @@
     <Build Include="Imp\Stored Procedures\usp_CityImport.sql" />
     <Build Include="Imp\Stored Procedures\usp_StreetImport.sql" />
     <Build Include="Imp\Stored Procedures\usp_ConformityImport.sql" />
+    <Build Include="Imp\Tables\xls_conformidade_site_20230621_093423753.sql" />
+    <Build Include="Imp\Tables\Lista-de-medicamentos-Farmacia-Popular-2023.sql" />
+    <Build Include="App\Functions\Capitalize_First_Letter.sql" />
+    <Build Include="Imp\Stored Procedures\usp_TherapeuticClassImport.sql" />
+    <Build Include="Imp\Stored Procedures\usp_ProductImport.sql" />
+    <Build Include="Imp\Stored Procedures\usp_LaboratoryImport.sql" />
+    <Build Include="Imp\Stored Procedures\usp_ActivePrincipleImport.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />

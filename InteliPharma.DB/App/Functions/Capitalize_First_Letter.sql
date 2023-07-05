@@ -1,0 +1,8 @@
+﻿CREATE    FUNCTION [App].[Capitalize_First_Letter](@Word VARCHAR(MAX))
+RETURNS VARCHAR(MAX)
+
+AS 
+BEGIN
+	SET @Word = UPPER(LEFT(TRIM(@Word),1))+LOWER(SUBSTRING(TRIM(@Word),2,LEN(TRIM(@Word))));    
+	RETURN @Word
+END
