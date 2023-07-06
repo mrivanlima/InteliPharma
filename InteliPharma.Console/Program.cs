@@ -6,6 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Principal;
 using System.Text.Json;
 
+WebScrapperDynamic d = new WebScrapperDynamic();
+d.DynamicScrap();
+//WebScrapper scrapper = new WebScrapper();
+//scrapper.scrap();
+
 
 string path = @"C:\Users\IvanLima\Documents\OpenCEP-main\v1";
 //FileReader files = new FileReader();
