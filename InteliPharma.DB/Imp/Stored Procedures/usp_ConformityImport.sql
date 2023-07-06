@@ -1,4 +1,4 @@
-﻿CREATE   PROCEDURE imp.usp_ConformityImport
+﻿CREATE   PROCEDURE [Imp].[usp_ConformityImport]
 AS
 BEGIN
   SELECT v.*,
@@ -7,8 +7,7 @@ BEGIN
 		 TRIM(LEFT(CLASSETERAPEUTICA, CHARINDEX('-', CLASSETERAPEUTICA)-2)),
 		 TRIM(RIGHT(CLASSETERAPEUTICA, LEN(CLASSETERAPEUTICA) - CHARINDEX('-', CLASSETERAPEUTICA))),
 		 TRIM(REPLACE(REPLACE(TARJA, '(**)', ''), '- (*)', '')) AS TARJA,
-  
   *
-  FROM [db_a9b211_intelipharma].[Imp].[Conformidade] c (nolock)
+  FROM [db_a9b211_intelipharma].[Imp].[Conformity] c (nolock)
 		CROSS APPLY STRING_SPLIT(SUBSTANCIA, ';') v; 
 END;
