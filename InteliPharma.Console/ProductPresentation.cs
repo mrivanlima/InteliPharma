@@ -11,6 +11,7 @@ namespace InteliPharma.Console
         public string Numero { get; set; } = string.Empty;
         public string Apresentacao { get; set; } = string.Empty;
         public string Registro { get; set; } = string.Empty;
+        public string UpRegistro { get; set; } = string.Empty;
         public string FormaFarmaceutica { get; set; } = string.Empty;
         public string DataDePublicacao { get; set; } = string.Empty;
         public string Validade { get; set; } = string.Empty;

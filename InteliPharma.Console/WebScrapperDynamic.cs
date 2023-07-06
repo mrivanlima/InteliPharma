@@ -57,6 +57,7 @@ namespace InteliPharma.Console
                     presentation.Numero = td[0 + (i*18)].Text;
                     presentation.Apresentacao = td[1 + (i * 18)].Text;
                     presentation.Registro = td[2 + (i * 18)].Text;
+                    presentation.UpRegistro = detail.Registro;
                     presentation.FormaFarmaceutica = td[3 + (i * 18)].Text;
                     presentation.DataDePublicacao = td[4 + (i * 18)].Text;
                     presentation.Validade = td[5 + (i * 18)].Text;
