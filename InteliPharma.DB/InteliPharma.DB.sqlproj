@@ -198,6 +198,8 @@
     <Build Include="stg\Stored Procedures\usp_Staging_Medication.sql" />
     <Build Include="Security\stg.sql" />
     <Build Include="Imp\Tables\Bula.sql" />
+    <Build Include="Imp\Tables\FarmaciaPopularCoPay.sql" />
+    <Build Include="Imp\Tables\FarmaciaPopular.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
