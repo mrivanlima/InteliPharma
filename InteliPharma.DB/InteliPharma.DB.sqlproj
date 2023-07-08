@@ -168,6 +168,10 @@
     <Build Include="App\Stored Procedures\usp_api_StreetReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_StreetUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ZipCodeCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ZipCodeDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ZipCodeReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ZipCodeReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ZipCodeUpdateById.sql" />
     <Build Include="App\Functions\replace_special_char.sql" />
     <Build Include="Imp\Tables\ZipGeoLocation.sql" />
     <Build Include="Security\Imp.sql" />
