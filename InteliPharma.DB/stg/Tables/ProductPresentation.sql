@@ -1,7 +1,9 @@
 ﻿CREATE TABLE [stg].[ProductPresentation] (
+    [Id]                                   INT           IDENTITY (1, 1) NOT NULL,
     [Numero]                               VARCHAR (MAX) NULL,
     [Apresentacao]                         VARCHAR (MAX) NULL,
     [Registro]                             VARCHAR (MAX) NULL,
+    [UpRegistro]                           VARCHAR (MAX) NULL,
     [FormaFarmaceutica]                    VARCHAR (MAX) NULL,
     [DataDePublicacao]                     VARCHAR (MAX) NULL,
     [Validade]                             VARCHAR (MAX) NULL,
@@ -17,4 +19,6 @@
     [Tarja]                                VARCHAR (MAX) NULL,
     [ApresentacaoFracionada]               VARCHAR (MAX) NULL
 );
+
+
 

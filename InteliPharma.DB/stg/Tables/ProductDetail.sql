@@ -1,4 +1,5 @@
 ﻿CREATE TABLE [stg].[ProductDetail] (
+    [Id]                     INT           IDENTITY (1, 1) NOT NULL,
     [NomeDaEmpresaDetentora] VARCHAR (MAX) NULL,
     [cnpj]                   VARCHAR (MAX) NULL,
     [Autorizacao]            VARCHAR (MAX) NULL,
@@ -16,4 +17,6 @@
     [BularioEletronico]      VARCHAR (MAX) NULL,
     [Rotulagem]              VARCHAR (MAX) NULL
 );
+
+
 
