@@ -1,15 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// See https://aka.ms/new-console-template for more inforctmation
 
 using InteliPharma.Console;
 using InteliPharma.Console.Database;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 using System.Security.Principal;
 using System.Text.Json;
 
-WebScrapperDynamic d = new WebScrapperDynamic();
-d.DynamicScrap();
-//WebScrapper scrapper = new WebScrapper();
-//scrapper.scrap();
+
 
 
 string path = @"C:\Users\IvanLima\Documents\OpenCEP-main\v1";
@@ -20,6 +19,39 @@ string connection = "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9b211_
 var dbOptions = new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer(connection).Options;
 var dbContext = new ApplicationDbContext(dbOptions);
 
+WebScrapperDynamic d = new WebScrapperDynamic();
+
+
+List<string> productDetail = dbContext.ProductDetails.Select(e => e.Registro).ToList();
+
+var medications = dbContext.Medication.Select(m => new Tuple<string, string>(m.Registro, m.ProcessoNoAccent)).ToList();
+var bulas = dbContext.Bula.Select(b => b.BulaRegister).ToList();
+
+var bu = medications.Where(e => !bulas.Contains(e.Item1)).ToList().Distinct();
+
+//List<ProductDetail> productDetail = dbContext.ProductDetails.ToList();
+
+//List<Medication> processos = dbContext.Medication
+//.Where(m => dbContext.ProductDetails.Any(d => d.Registro == m.Registro))
+//.ToList();
+
+var processos = medications.Where(e => !productDetail.Contains(e.Item1)).ToList();
+
+//WebScrapperDynamic d = new WebScrapperDynamic();
+foreach(var p in processos)
+{
+    d.DynamicScrap(p.Item2, dbContext);
+
+}
+
+foreach (var b in bu)
+{
+    d.DynamicScrapBula(b.Item1, dbContext);
+}
+
+//WebScrapper scrapper = new WebScrapper();
+//scrapper.scrap();
+
 //if (dbContext != null)
 //{
 //    List<string> ceps = dbContext.cepGeoLocation.Select(e => e.postcode).ToList();
@@ -28,7 +60,9 @@ var dbContext = new ApplicationDbContext(dbOptions);
 
 //}
 
-List<string> zips = dbContext.zipCodeInfo.Select(e => e.cep.Remove(5, 1)).ToList();
+
+
+List<string> zips = dbContext.ZipCodeInfo.Select(e => e.cep.Remove(5, 1)).ToList();
 
 string contentss = File.ReadAllText(@"C:\Users\IvanLima\Documents\cep.json");
 List<CepInfo> ceps = JsonSerializer.Deserialize<List<CepInfo>>(contentss);
@@ -54,12 +88,12 @@ foreach(var c in ceps)
 
         if (dbContext != null)
         {
-            dbContext.zipCodeInfo.Add(zipCodeInfo);
+            dbContext.ZipCodeInfo.Add(zipCodeInfo);
         }
 
         if (dbContext != null && counter % 5000 == 0)
         {
-            dbContext.zipCodeInfo.Add(zipCodeInfo);
+            dbContext.ZipCodeInfo.Add(zipCodeInfo);
             dbContext.SaveChanges();
         }
     }
