@@ -200,6 +200,20 @@
     <Build Include="Imp\Tables\Bula.sql" />
     <Build Include="Imp\Tables\FarmaciaPopularCoPay.sql" />
     <Build Include="Imp\Tables\FarmaciaPopular.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserDiseaseCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserDiseaseDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserDiseaseReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserDiseaseReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserMeasurementCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserMeasurementDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserMeasurementReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserMeasurementReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserMeasurementUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserStoreCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserStoreDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserStoreReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserStoreReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserStoreUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
