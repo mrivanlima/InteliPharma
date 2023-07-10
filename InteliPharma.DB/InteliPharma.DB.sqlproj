@@ -213,6 +213,8 @@
     <Build Include="App\Stored Procedures\usp_api_UserDiseaseUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_UserAddressCreate.sql" />
     <Build Include="App\Stored Procedures\usp_api_UserAddressDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserAddressReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_UserAddressReadById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
