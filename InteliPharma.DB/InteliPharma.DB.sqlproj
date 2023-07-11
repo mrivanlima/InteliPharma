@@ -220,6 +220,7 @@
     <Build Include="App\Stored Procedures\usp_api_TransporterDeleteById.sql" />
     <Build Include="App\Stored Procedures\usp_api_TransporterReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_TransporterReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_TransporterUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
