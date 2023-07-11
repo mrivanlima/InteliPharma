@@ -217,6 +217,7 @@
     <Build Include="App\Stored Procedures\usp_api_UserAddressReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_UserAddressUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_TransporterCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_TransporterDeleteById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
