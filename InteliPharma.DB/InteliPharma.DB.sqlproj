@@ -224,6 +224,8 @@
     <Build Include="Imp\Tables\CepInfo2.sql" />
     <Build Include="App\Stored Procedures\usp_api_TaxCalculationCreate.sql" />
     <Build Include="App\Stored Procedures\usp_api_TaxCalculationDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_TaxCalculationReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_TaxCalculationReadById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
