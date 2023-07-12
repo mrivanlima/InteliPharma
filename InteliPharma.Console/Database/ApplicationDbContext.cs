@@ -19,7 +19,28 @@ namespace InteliPharma.Console.Database
         public DbSet<ProductDetail> ProductDetails { get; set; }
         public DbSet<ProductPresentation> ProductPresentations { get; set; }
         public DbSet<Bula> Bula { get; set; }
+        public DbSet<Cep> Ceps { get; set; }
     }
+
+    [Table("CepInfo2", Schema = "imp")]
+    public class Cep
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CepId { get; set; }
+        public string? CidadeNome { get; set; } = string.Empty;
+        public string? ibge { get; set; } = string.Empty;
+        public string? ddd { get; set; } = string.Empty;
+        public string? estadoSigla { get; set; } = string.Empty;
+        public string? Altitude { get; set; } = string.Empty;
+        public string? longitude { get; set; } = string.Empty;
+        public string? bairro { get; set; } = string.Empty;
+        public string? complemento { get; set; } = string.Empty;
+        public string? cep { get; set; } = string.Empty;
+        public string? logradouro { get; set; } = string.Empty;
+        public string? latitude { get; set; } = string.Empty;
+    }
+
 
 
     [Table("Bula", Schema = "imp")]

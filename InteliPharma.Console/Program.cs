@@ -4,20 +4,59 @@ using InteliPharma.Console;
 using InteliPharma.Console.Database;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Security.Principal;
+using System.Text;
 using System.Text.Json;
+using Microsoft.Extensions.Configuration;
 
 
+
+var builder = new ConfigurationBuilder();
+builder.SetBasePath(Directory.GetCurrentDirectory())
+       .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+IConfiguration config = builder.Build();
+
+string connectionString = config.GetSection("ConnectionString").GetSection("DevConnection").Value;
 
 
 string path = @"C:\Users\IvanLima\Documents\OpenCEP-main\v1";
+const Int32 BufferSize = 128;
 //FileReader files = new FileReader();
 //files.ReadFilesFromFolder(path);
 
-string connection = "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9b211_intelipharma;User Id=db_a9b211_intelipharma_admin;Password=senha1234;";
+string connection = connectionString;
 var dbOptions = new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer(connection).Options;
 var dbContext = new ApplicationDbContext(dbOptions);
+
+
+List<string> ceps = new List<string>(); 
+
+using (var fileStream = File.OpenRead(@"C:\Users\IvanLima\Documents\ceps\GO\Goias.txt"))
+using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, BufferSize))
+{
+    String line;
+    while ((line = streamReader.ReadLine()) != null)
+    {
+        ceps.Add(line);
+    }
+}
+
+var cs = dbContext.Ceps.Select(s => s.cep).ToList();
+ceps = ceps.Except(cs).ToList();
+
+BuscarCep cep = new BuscarCep();
+
+var co = 0;
+foreach(var c in ceps)
+{
+    cep.CallWebApi(c, dbContext);
+    Console.WriteLine(co++);
+}
+
 
 WebScrapperDynamic d = new WebScrapperDynamic();
 
@@ -37,17 +76,34 @@ var bu = medications.Where(e => !bulas.Contains(e.Item1)).ToList().Distinct();
 
 var processos = medications.Where(e => !productDetail.Contains(e.Item1)).ToList();
 
-//WebScrapperDynamic d = new WebScrapperDynamic();
-foreach(var p in processos)
-{
-    d.DynamicScrap(p.Item2, dbContext);
+List<string> list = new List<string>();
 
+
+using (var fileStream = File.OpenRead(@"C:\Users\IvanLima\Documents\Exception\except.txt"))
+using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, BufferSize))
+{
+    String line;
+    while ((line = streamReader.ReadLine()) != null)
+    {
+        list.Add(line);
+    }
 }
+
+bu = bu.Where(e => !list.Contains(e.Item1)).ToList().Distinct();
 
 foreach (var b in bu)
 {
     d.DynamicScrapBula(b.Item1, dbContext);
 }
+
+//WebScrapperDynamic d = new WebScrapperDynamic();
+foreach (var p in processos)
+{
+    d.DynamicScrap(p.Item2, dbContext);
+
+}
+
+
 
 //WebScrapper scrapper = new WebScrapper();
 //scrapper.scrap();
@@ -64,40 +120,40 @@ foreach (var b in bu)
 
 List<string> zips = dbContext.ZipCodeInfo.Select(e => e.cep.Remove(5, 1)).ToList();
 
-string contentss = File.ReadAllText(@"C:\Users\IvanLima\Documents\cep.json");
-List<CepInfo> ceps = JsonSerializer.Deserialize<List<CepInfo>>(contentss);
+//string contentss = File.ReadAllText(@"C:\Users\IvanLima\Documents\cep.json");
+//List<CepInfo> ceps = JsonSerializer.Deserialize<List<CepInfo>>(contentss);
 
 
-int counter = 0;
-foreach(var c in ceps)
-{
-    Console.WriteLine(c.cep + " Counter " + ++counter);
-    if (zips.Contains(c.cep))
-    {
-        continue;
-    }
-    else
-    {
-        ZipCodeInfo zipCodeInfo = new ZipCodeInfo();
-        zipCodeInfo.cep = c.cep;
-        zipCodeInfo.logradouro = c.rua;
-        zipCodeInfo.bairro = c.bairro;
-        zipCodeInfo.localidade = c.cidade;
-        zipCodeInfo.uf = c.estado;
+//int counter = 0;
+//foreach(var c in ceps)
+//{
+//    Console.WriteLine(c.cep + " Counter " + ++counter);
+//    if (zips.Contains(c.cep))
+//    {
+//        continue;
+//    }
+//    else
+//    {
+//        ZipCodeInfo zipCodeInfo = new ZipCodeInfo();
+//        zipCodeInfo.cep = c.cep;
+//        zipCodeInfo.logradouro = c.rua;
+//        zipCodeInfo.bairro = c.bairro;
+//        zipCodeInfo.localidade = c.cidade;
+//        zipCodeInfo.uf = c.estado;
         
 
-        if (dbContext != null)
-        {
-            dbContext.ZipCodeInfo.Add(zipCodeInfo);
-        }
+//        if (dbContext != null)
+//        {
+//            dbContext.ZipCodeInfo.Add(zipCodeInfo);
+//        }
 
-        if (dbContext != null && counter % 5000 == 0)
-        {
-            dbContext.ZipCodeInfo.Add(zipCodeInfo);
-            dbContext.SaveChanges();
-        }
-    }
-}
+//        if (dbContext != null && counter % 5000 == 0)
+//        {
+//            dbContext.ZipCodeInfo.Add(zipCodeInfo);
+//            dbContext.SaveChanges();
+//        }
+//    }
+//}
 
 
 //int count = 0;

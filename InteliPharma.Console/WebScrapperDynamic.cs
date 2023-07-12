@@ -105,6 +105,8 @@ namespace InteliPharma.Console
         public void DynamicScrapBula(string url, ApplicationDbContext dbContext)
         {
             string path = @"C:\Users\IvanLima\Documents\Bulas";
+            int error = 0;
+            
             try
             {
 
@@ -116,9 +118,14 @@ namespace InteliPharma.Console
 
                 driver = new ChromeDriver(options);
                 driver.Navigate().GoToUrl("https://consultas.anvisa.gov.br/#/bulario/q/?numeroRegistro=" + url);
-                System.Threading.Thread.Sleep(5000);
+                System.Threading.Thread.Sleep(3000);
 
                 var collections = driver.FindElements(By.CssSelector("[ng-if='produto.idBulaPacienteProtegido']"));
+
+                if(collections.Count == 0)
+                {
+                    throw new Exception("not found");
+                }
 
                 var before = Directory.GetFiles(path);
                 collections[0].Click();
@@ -126,17 +133,24 @@ namespace InteliPharma.Console
 
                 var patientPath = Directory.GetFiles(path).FirstOrDefault(e => !before.Contains(e));
 
-                collections = driver.FindElements(By.CssSelector("[ng-if='produto.idBulaProfissionalProtegido']"));
+                //collections = driver.FindElements(By.CssSelector("[ng-if='produto.idBulaProfissionalProtegido']"));
 
-                before = Directory.GetFiles(path);
-                collections[0].Click();
-                System.Threading.Thread.Sleep(5000);
+                //before = Directory.GetFiles(path);
+                //collections[0].Click();
+                //System.Threading.Thread.Sleep(5000);
 
-                var doctorPath = Directory.GetFiles(path).FirstOrDefault(e => !before.Contains(e));
+                //var doctorPath = Directory.GetFiles(path).FirstOrDefault(e => !before.Contains(e));
 
+
+                if(string.IsNullOrEmpty(patientPath))
+                {
+                    error = 1;
+                    throw new Exception("Need more time!");
+
+                }
                 Bula bula = new Bula {
                    BulaPatientPath = patientPath,
-                   BulaDoctorPath = doctorPath,
+                   BulaDoctorPath = null,
                    BulaRegister = url
                 };
 
@@ -145,7 +159,10 @@ namespace InteliPharma.Console
             }
             catch (Exception e)
             {
-
+                if (error == 0)
+                {
+                    File.AppendAllText(@"C:\Users\IvanLima\Documents\Exception\except.txt", url + Environment.NewLine);
+                }
             }
             finally
             {
