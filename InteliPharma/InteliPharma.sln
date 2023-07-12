@@ -9,7 +9,9 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "InteliPharma.DB", "..\Intel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteliPharma.API", "..\InteliPharma.API\InteliPharma.API.csproj", "{1230F008-834C-416D-BAE7-75F8A08490DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteliPharma.Console", "..\InteliPharma.Console\InteliPharma.Console.csproj", "{F206B811-08CA-46FB-AABA-FB1CBD6C3613}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteliPharma.Console", "..\InteliPharma.Console\InteliPharma.Console.csproj", "{F206B811-08CA-46FB-AABA-FB1CBD6C3613}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntiPharma.Maui", "..\IntiPharma.Maui\IntiPharma.Maui.csproj", "{E3D11848-1B7E-4DCE-801D-B5531442DEEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,12 @@ Global
 		{F206B811-08CA-46FB-AABA-FB1CBD6C3613}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F206B811-08CA-46FB-AABA-FB1CBD6C3613}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F206B811-08CA-46FB-AABA-FB1CBD6C3613}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D11848-1B7E-4DCE-801D-B5531442DEEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D11848-1B7E-4DCE-801D-B5531442DEEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D11848-1B7E-4DCE-801D-B5531442DEEB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E3D11848-1B7E-4DCE-801D-B5531442DEEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D11848-1B7E-4DCE-801D-B5531442DEEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D11848-1B7E-4DCE-801D-B5531442DEEB}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
