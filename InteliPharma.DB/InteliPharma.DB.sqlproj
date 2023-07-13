@@ -231,6 +231,7 @@
     <Build Include="App\Stored Procedures\usp_api_StoreDeleteById.sql" />
     <Build Include="App\Stored Procedures\usp_api_StoreReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_StoreReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_StoreUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
