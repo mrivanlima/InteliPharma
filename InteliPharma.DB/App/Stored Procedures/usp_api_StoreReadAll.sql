@@ -1,0 +1,12 @@
+﻿
+CREATE   PROCEDURE App.usp_api_StoreReadAll
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+	SELECT	StoreId,
+			StoreName,
+			AddressId
+	FROM App.Store;
+END;
