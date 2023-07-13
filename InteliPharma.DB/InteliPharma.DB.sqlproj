@@ -228,6 +228,7 @@
     <Build Include="App\Stored Procedures\usp_api_TaxCalculationReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_TaxCalculationUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_StoreCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_StoreDeleteById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
