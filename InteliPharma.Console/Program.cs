@@ -11,8 +11,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Configuration;
-
-
+using Microsoft.Data.SqlClient;
 
 var builder = new ConfigurationBuilder();
 builder.SetBasePath(Directory.GetCurrentDirectory())
@@ -33,7 +32,7 @@ var dbOptions = new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer
 var dbContext = new ApplicationDbContext(dbOptions);
 
 
-List<string> ceps = new List<string>(); 
+List<string> ceps = new List<string>();
 
 using (var fileStream = File.OpenRead(@"C:\Users\IvanLima\Documents\ceps\GO\Goias.txt"))
 using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, BufferSize))
@@ -51,7 +50,7 @@ ceps = ceps.Except(cs).ToList();
 BuscarCep cep = new BuscarCep();
 
 var co = 0;
-foreach(var c in ceps)
+foreach (var c in ceps)
 {
     cep.CallWebApi(c, dbContext);
     Console.WriteLine(co++);
@@ -90,18 +89,20 @@ using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, Buff
 }
 
 bu = bu.Where(e => !list.Contains(e.Item1)).ToList().Distinct();
-
+Console.WriteLine(bu.Count());
+var i = 0;
 foreach (var b in bu)
 {
     d.DynamicScrapBula(b.Item1, dbContext);
+    Console.WriteLine(++i);
 }
 
-//WebScrapperDynamic d = new WebScrapperDynamic();
-foreach (var p in processos)
-{
-    d.DynamicScrap(p.Item2, dbContext);
+////WebScrapperDynamic d = new WebScrapperDynamic();
+//foreach (var p in processos)
+//{
+//    d.DynamicScrap(p.Item2, dbContext);
 
-}
+//}
 
 
 
@@ -118,7 +119,7 @@ foreach (var p in processos)
 
 
 
-List<string> zips = dbContext.ZipCodeInfo.Select(e => e.cep.Remove(5, 1)).ToList();
+//List<string> zips = dbContext.ZipCodeInfo.Select(e => e.cep.Remove(5, 1)).ToList();
 
 //string contentss = File.ReadAllText(@"C:\Users\IvanLima\Documents\cep.json");
 //List<CepInfo> ceps = JsonSerializer.Deserialize<List<CepInfo>>(contentss);
