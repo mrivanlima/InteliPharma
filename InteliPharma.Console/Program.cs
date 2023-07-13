@@ -53,7 +53,14 @@ var co = 0;
 foreach (var c in ceps)
 {
     cep.CallWebApi(c, dbContext);
-    Console.WriteLine(co++);
+    co = co + 1;
+
+    Console.WriteLine("Number is: " + co);
+
+    if (co == 10000)
+    {
+        break;
+    }
 }
 
 

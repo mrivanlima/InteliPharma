@@ -118,7 +118,7 @@ namespace InteliPharma.Console
 
                 driver = new ChromeDriver(options);
                 driver.Navigate().GoToUrl("https://consultas.anvisa.gov.br/#/bulario/q/?numeroRegistro=" + url);
-                System.Threading.Thread.Sleep(8000);
+                System.Threading.Thread.Sleep(20000);
 
                 var collections = driver.FindElements(By.CssSelector("[ng-if='produto.idBulaPacienteProtegido']"));
 
@@ -130,7 +130,7 @@ namespace InteliPharma.Console
                 var before = Directory.GetFiles(path);
                // System.Threading.Thread.Sleep(5000);
                 collections[0].Click();
-                System.Threading.Thread.Sleep(15000);
+                System.Threading.Thread.Sleep(20000);
 
                 var patientPath = Directory.GetFiles(path).FirstOrDefault(e => !before.Contains(e));
 
