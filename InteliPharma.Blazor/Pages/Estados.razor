@@ -1,9 +1,54 @@
 ﻿@page "/Estados"
 @inject IState state;
+@inject IJSRuntime JSRuntime;
+@inject HttpClient Http;
 
 <h3>Estados</h3>
+<EditForm Model="@stateViewModel" OnValidSubmit="@Save">
+
+    <div id="divServerValidations" class="col-10 alert alert-info">
+
+    </div>
+
+    <DataAnnotationsValidator />
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold"> Estado</label>
+        <InputText class="form-control col-3" @bind-Value="stateViewModel.StateName" placeholder="Estado" />
+        &nbsp;<ValidationMessage For="@(() => stateViewModel.StateName)" />
+        
+    </div>
+
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">Abreviacao</label>
+        <InputText class="form-control col-3" @bind-Value="stateViewModel.StateAbbreviation" placeholder="Abreviacao" />
+        &nbsp;<ValidationMessage For="@(() => stateViewModel.StateAbbreviation)" />
+    </div>
+
+    <div class="col-12 row">
+        <span class="col-2"></span>
+        <input type="submit" class="form-control col-1 btn btn-primary" value="Adicionar" />
+        <span>&nbsp;</span>
+        <input type="submit" class="form-control col-1 btn btn-primary" value="Limpar"/>
+
+    </div>
+</EditForm>
 
 
 @code {
+    public StateViewModel stateViewModel { get; set; }
+    public List<StateViewModel> stateViewModels { get; set; }
 
+    protected override async void OnInitialized()
+    {
+        stateViewModel = new StateViewModel();
+        stateViewModels = await Http.GetFromJsonAsync<List<StateViewModel>>("https://localhost:7228/api/Estado");
+        await base.OnInitializedAsync();
+    }
+    private async Task  Save()
+    {
+        var stateName = stateViewModel.StateName;
+        var stateAbbreviation = stateViewModel.StateAbbreviation;
+        await JSRuntime.InvokeVoidAsync("saveMessage", stateName, stateAbbreviation);
+
+    }
 }
