@@ -4,7 +4,7 @@
 @inject HttpClient Http;
 
 <h3>Estados</h3>
-<EditForm Model="@stateViewModel" OnValidSubmit="@Save">
+<EditForm Model="@stateViewModel" OnValidSubmit="@SaveState" id="elementid">
 
     <div id="divServerValidations" class="col-10 alert alert-info">
 
@@ -26,29 +26,115 @@
 
     <div class="col-12 row">
         <span class="col-2"></span>
-        <input type="submit" class="form-control col-1 btn btn-primary" value="Adicionar" />
+        <input type="submit" class="form-control col-1 btn btn-primary" value="Salvar" />
         <span>&nbsp;</span>
-        <input type="submit" class="form-control col-1 btn btn-primary" value="Limpar"/>
+        <input type="button" @onclick="(() => ClearForm())" class="form-control col-1 btn btn-primary" value="Limpar" />
 
     </div>
 </EditForm>
+
+<br/>
+<div class="col-10">
+    <h3><b>Estados</b></h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>StateId</th>
+                <th>Estado</th>
+                <th>UF</th>
+                <th>Acao</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var state in stateViewModels)
+            {
+                <tr>
+                    <td>
+                        <NavLink href="">
+
+                        </NavLink>
+                    </td>
+                    <td>@state.StateName</td>
+                    <td>@state.StateAbbreviation</td>
+                    <td>
+                        <a style="text-underline-position:under; cursor:pointer; color:blue; font-weight:bold"
+                        @onclick="(() => UpdateState((state)))">Atualizar
+                        </a> | 
+                        <a style="text-underline-position:under; cursor:pointer; color:blue; font-weight:bold"
+                           @onclick="(() => DeleteState((state.StateId)))">Deletar
+                       </a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
 
 
 @code {
     public StateViewModel stateViewModel { get; set; }
     public List<StateViewModel> stateViewModels { get; set; }
 
-    protected override async void OnInitialized()
+    protected override async  Task OnInitializedAsync()
     {
         stateViewModel = new StateViewModel();
+        stateViewModels = new List<StateViewModel>();
         stateViewModels = await Http.GetFromJsonAsync<List<StateViewModel>>("https://localhost:7228/api/Estado");
+        stateViewModels = stateViewModels.OrderBy(s => s.StateName).ToList();
         await base.OnInitializedAsync();
-    }
-    private async Task  Save()
-    {
-        var stateName = stateViewModel.StateName;
-        var stateAbbreviation = stateViewModel.StateAbbreviation;
-        await JSRuntime.InvokeVoidAsync("saveMessage", stateName, stateAbbreviation);
+
 
     }
+    private async Task  SaveState()
+    {
+        if (stateViewModel.StateId == 0)
+        {
+            await Http.PostAsJsonAsync("https://localhost:7228/api/Estado", stateViewModel);
+        }
+        else
+        {
+            await Http.PutAsJsonAsync("https://localhost:7228/api/Estado", stateViewModel);
+        }
+        await LoadStates();
+        //var stateName = stateViewModel.StateName;
+        //var stateAbbreviation = stateViewModel.StateAbbreviation;
+        //await JSRuntime.InvokeVoidAsync("saveMessage", stateName, stateAbbreviation);
+        ClearForm();
+
+    }
+
+    private async Task LoadStates()
+    {
+        stateViewModels = await Http.GetFromJsonAsync<List<StateViewModel>>("https://localhost:7228/api/Estado");
+        stateViewModels = stateViewModels.OrderBy(s => s.StateName).ToList();
+
+        StateHasChanged();
+    }
+
+    private async Task DeleteState(int id)
+    {
+        await Http.DeleteAsync("https://localhost:7228/api/Estado/?stateId=" + id);
+        await LoadStates();
+    }
+
+    private void UpdateState(StateViewModel state)
+    {
+        stateViewModel = state;
+        ScrollToElementId();
+    }
+
+    private void ClearForm()
+    {
+        stateViewModel = new StateViewModel();
+    }
+
+    private void ScrollToElementId()
+    {
+        JSRuntime.InvokeVoidAsync("backToTop");
+    }
+
+
 }
