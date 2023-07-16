@@ -25,7 +25,7 @@ namespace InteliPharma.Console
                 WebClient client = new WebClient { Encoding = Encoding.UTF8 };
                 //Token token=5f46391c12531a17f587751d249c4e68"
                 //'Token token=67c80e8f7b2829c7d7c9c44d3dff2970'
-                var token = "Token token=5f46391c12531a17f587751d249c4e68";
+                var token = "Token token=67c80e8f7b2829c7d7c9c44d3dff2970";
                 var url = "https://www.cepaberto.com/api/v3/cep?cep={0}";
                 client.Headers.Add(HttpRequestHeader.Authorization, token);
 
