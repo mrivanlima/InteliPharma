@@ -240,6 +240,7 @@
     <Build Include="App\Stored Procedures\usp_api_StockReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_StockReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_StockUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_SpecialtyCreate.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
