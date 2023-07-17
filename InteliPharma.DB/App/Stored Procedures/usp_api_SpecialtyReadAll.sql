@@ -1,0 +1,11 @@
+﻿
+CREATE   PROCEDURE App.usp_api_SpecialtyReadAll
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+	SELECT	SpecialtyId,
+			SpecialtyName
+	FROM App.Specialty;
+END;
