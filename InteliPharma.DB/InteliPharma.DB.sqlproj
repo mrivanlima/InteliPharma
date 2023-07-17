@@ -232,6 +232,9 @@
     <Build Include="App\Stored Procedures\usp_api_StoreReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_StoreReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_StoreUpdateById.sql" />
+    <Build Include="stg\Tables\State.sql" />
+    <Build Include="stg\Tables\City.sql" />
+    <Build Include="Imp\Stored Procedures\usp_StateImport.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
