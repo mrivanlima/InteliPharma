@@ -246,6 +246,7 @@
     <Build Include="App\Stored Procedures\usp_api_SpecialtyReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_SpecialtyUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ShippingAgreementCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ShippingAgreementDeleteById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
