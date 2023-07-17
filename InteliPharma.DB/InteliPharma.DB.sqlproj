@@ -236,6 +236,7 @@
     <Build Include="stg\Tables\City.sql" />
     <Build Include="Imp\Stored Procedures\usp_StateImport.sql" />
     <Build Include="App\Stored Procedures\usp_api_StockCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_StockDeleteById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
