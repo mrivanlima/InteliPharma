@@ -251,6 +251,10 @@
     <Build Include="App\Stored Procedures\usp_api_ShippingAgreementReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ShippingAgreementUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_PurchaseCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_PurchaseDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_PurchaseReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_PurchaseReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_PurchaseUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
