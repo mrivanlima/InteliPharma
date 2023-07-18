@@ -24,8 +24,8 @@ BEGIN
 		BEGIN TRANSACTION @StoredProcedureName
 
 			UPDATE s
-				SET		ShippingAgreementId = @ShippingAgreementId,
-						@ShippingName = @ShippingName
+				SET		
+						ShippingName = @ShippingName
 			FROM App.ShippingAgreement s
 			WHERE ShippingAgreementId = @ShippingAgreementId
 
