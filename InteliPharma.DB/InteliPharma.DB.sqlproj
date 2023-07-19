@@ -270,6 +270,7 @@
     <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyDeleteById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
