@@ -271,6 +271,11 @@
     <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
