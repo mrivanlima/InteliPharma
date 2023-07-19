@@ -7,7 +7,8 @@ BEGIN
 	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 
 	SELECT	ActivePrincipleId,
-			ActivePrincipleName
+			ActivePrincipleName,
+			ActivePrincipleNameASCII
 	FROM App.ActivePrinciple
 	WHERE ActivePrincipleId = @ActivePrincipleId;
 END;

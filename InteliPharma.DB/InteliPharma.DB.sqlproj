@@ -260,12 +260,12 @@
     <Build Include="App\Stored Procedures\usp_api_ProfessionalTypeReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_ProfessionalTypeReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ProfessionalTypeUpdateById.sql" />
-    <Build Include="App\Stored Procedures\usp_api_ActivePrincipleCreate.sql" />
-    <Build Include="App\Stored Procedures\usp_api_ActivePrincipleDeleteById.sql" />
+    <Build Include="Log\Tables\ErrorLog.sql" />
     <Build Include="App\Stored Procedures\usp_api_ActivePrincipleReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_ActivePrincipleReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ActivePrincipleUpdateById.sql" />
-    <Build Include="Log\Tables\ErrorLog.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ActivePrincipleDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ActivePrincipleCreate.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />

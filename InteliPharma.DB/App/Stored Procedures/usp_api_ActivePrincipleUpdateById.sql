@@ -25,7 +25,7 @@ BEGIN
 
 			UPDATE ap
 				SET ActivePrincipleName = @ActivePrincipleName,
-					ActivePrincipleASCII = @ActivePrincipleASCII
+					ActivePrincipleNameASCII = @ActivePrincipleASCII
 			FROM App.ActivePrinciple ap
 			WHERE ActivePrincipleId = @ActivePrincipleId
 

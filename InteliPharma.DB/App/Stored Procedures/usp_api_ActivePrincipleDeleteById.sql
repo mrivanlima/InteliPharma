@@ -21,8 +21,8 @@ BEGIN
 	BEGIN TRY
 		BEGIN TRANSACTION @StoredProcedureName
 
-			DELETE c
-			FROM App.ActivePrinciple c
+			DELETE ap
+			FROM App.ActivePrinciple ap
 			WHERE ActivePrincipleId = @ActivePrincipleId
 
 			PRINT CONCAT(@ActivePrincipleId, ' Deleted successfully!');
