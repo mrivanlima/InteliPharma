@@ -266,6 +266,7 @@
     <Build Include="App\Stored Procedures\usp_api_ActivePrincipleUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ActivePrincipleDeleteById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ActivePrincipleCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyCreate.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
