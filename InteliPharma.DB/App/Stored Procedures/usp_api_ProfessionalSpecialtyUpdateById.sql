@@ -25,7 +25,7 @@ BEGIN
 		BEGIN TRANSACTION @StoredProcedureName
 
 			UPDATE p
-				SET ProfessionalSpecialtyId = @ProfessionalSpecialtyId,
+				SET 
 					SpecialtyId = @SpecialtyId,
 					ProfessionalId = @ProfessionalId
 			FROM App.ProfessionalSpecialty p 
