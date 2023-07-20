@@ -282,6 +282,7 @@
     <Build Include="App\Stored Procedures\usp_api_ProductPurchaseReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ProductPurchaseUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ProductCartUserCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductCartUserDeleteById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
