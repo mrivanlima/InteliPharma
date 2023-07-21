@@ -261,6 +261,36 @@
     <Build Include="App\Stored Procedures\usp_api_ProfessionalTypeReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ProfessionalTypeUpdateById.sql" />
     <Build Include="Log\Tables\ErrorLog.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ActivePrincipleReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ActivePrincipleReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ActivePrincipleUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ActivePrincipleDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ActivePrincipleCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalSpecialtyUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProfessionalUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductPurchaseCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductPurchaseDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductPurchaseReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductPurchaseReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductPurchaseUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductCartUserCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductCartUserDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductCartUserReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductCartUserReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductCartUserUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ProductUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />

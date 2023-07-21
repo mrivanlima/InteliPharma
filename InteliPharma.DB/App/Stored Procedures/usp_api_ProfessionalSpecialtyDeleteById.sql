@@ -1,35 +1,31 @@
-﻿CREATE   PROCEDURE App.usp_api_ActivePrincipleUpdateById
-	@ActivePrincipleId INT = NULL OUTPUT,
-	@ActivePrincipleName VARCHAR(400),
-	@ActivePrincipleASCII VARCHAR(400)
+﻿
+CREATE   PROCEDURE App.usp_api_ProfessionalSpecialtyDeleteById
+	@ProfessionalSpecialtyId	INT
 AS
 BEGIN
-	
+
 	SET NOCOUNT ON;
 	SET XACT_ABORT ON;
 
-	DECLARE @StoredProcedureName	VARCHAR(100) = 'usp_api_ActivePrincipleUpdateById';
+	DECLARE @StoredProcedureName	VARCHAR(100) = 'usp_api_ProfessionalSpecialtyDeleteById';
 	DECLARE @ErrorMessage			VARCHAR(100) = CONCAT('Error', ' ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR(100);
 
-	SET @ActivePrincipleName = TRIM(@ActivePrincipleName);
 
-	IF NOT EXISTS (SELECT * FROM App.ActivePrinciple WHERE ActivePrincipleId = @ActivePrincipleId)
+	IF NOT EXISTS (SELECT * FROM App.ProfessionalSpecialty WHERE ProfessionalSpecialtyId = @ProfessionalSpecialtyId)
 	BEGIN
-		SET @ErrorMessage = CONCAT(@ActivePrincipleId, ' ', 'not found!');
+		SET @ErrorMessage = CONCAT(@ProfessionalSpecialtyId, ' ', 'not found!');
 		THROW 50005, @ErrorMessage, 1;
 	END
-
+	
 	BEGIN TRY
 		BEGIN TRANSACTION @StoredProcedureName
 
-			UPDATE ap
-				SET ActivePrincipleName = @ActivePrincipleName,
-					ActivePrincipleNameASCII = @ActivePrincipleASCII
-			FROM App.ActivePrinciple ap
-			WHERE ActivePrincipleId = @ActivePrincipleId
+			DELETE p
+			FROM App.ProfessionalSpecialty p
+			WHERE ProfessionalSpecialtyId = @ProfessionalSpecialtyId
 
-			PRINT CONCAT(@ActivePrincipleName, ' ', 'updated successfully!');
+			PRINT CONCAT(@ProfessionalSpecialtyId, ' ', 'Deleted successfully!');
 		COMMIT TRANSACTION @StoredProcedureName	
 	END TRY
 
