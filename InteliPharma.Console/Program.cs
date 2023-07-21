@@ -34,7 +34,7 @@ var dbContext = new ApplicationDbContext(dbOptions);
 
 List<string> ceps = new List<string>();
 
-using (var fileStream = File.OpenRead(@"C:\Users\IvanLima\Documents\ceps\DF\DF.txt"))
+using (var fileStream = File.OpenRead(@"C:\Users\IvanLima\Documents\ceps\MG\MG.txt"))
 using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, BufferSize))
 {
     String line;
