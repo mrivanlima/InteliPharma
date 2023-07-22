@@ -293,6 +293,8 @@
     <Build Include="App\Stored Procedures\usp_api_ProductUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_PrescriptionTypeCreate.sql" />
     <Build Include="App\Stored Procedures\usp_api_PrescriptionTypeDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_PrescriptionTypeReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_PrescriptionTypeReadById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
