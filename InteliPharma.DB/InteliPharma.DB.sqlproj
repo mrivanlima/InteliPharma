@@ -301,6 +301,11 @@
     <Build Include="App\Stored Procedures\usp_api_PrescriptionReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_PrescriptionReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_PrescriptionUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_PharmaceuticalFormCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_PharmaceuticalFormDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_PharmaceuticalFormReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_PharmaceuticalFormReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_PharmaceuticalFormUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
