@@ -1,0 +1,11 @@
+﻿
+CREATE   PROCEDURE App.usp_api_PaymentReadAll
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+	SELECT	PaymentId,
+			PaymentMethodId
+	FROM App.Payment;
+END;
