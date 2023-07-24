@@ -19,7 +19,7 @@ BEGIN
 		BEGIN TRANSACTION @StoredProcedureName
 
 			UPDATE o
-				SET OrderPaymentId = @OrderPaymentId,
+				SET 
 					OrderId = @OrderId,
 					PaymentId = @PaymentId
 			FROM App.OrderPayment o 
