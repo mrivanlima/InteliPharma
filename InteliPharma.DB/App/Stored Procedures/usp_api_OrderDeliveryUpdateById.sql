@@ -1,5 +1,5 @@
 ﻿
-CREATE   PROCEDURE App.usp_api_OrderDeliveryCreate
+CREATE   PROCEDURE App.usp_api_OrderDeliveryUpdateById
 	@OrderDeliveryId   BIGINT   NOT NULL,
     @DeliveryId        BIGINT   NULL,
     @OrderId           INT      NULL,
@@ -15,41 +15,34 @@ BEGIN
 	SET NOCOUNT ON;
 	SET XACT_ABORT ON;
 
-	DECLARE @StoredProcedureName	VARCHAR(100) = 'usp_api_OrderDeliveryCreate';
+	DECLARE @StoredProcedureName	VARCHAR(100) = 'usp_api_OrderDeliveryUpdateById';
 	DECLARE @ErrorMessage			VARCHAR(100) = CONCAT('Error', ' ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR(100);
 
 	
+
+	IF NOT EXISTS (SELECT * FROM App.OrderDelivery WHERE OrderDeliveryId = @OrderDeliveryId)
+	BEGIN
+		SET @ErrorMessage = CONCAT(@OrderDeliveryId, ' ', 'not found!');
+		THROW 50005, @ErrorMessage, 1;
+	END
 	
 	BEGIN TRY
 		BEGIN TRANSACTION @StoredProcedureName
-			INSERT INTO App.OrderDelivery
-			(
-				OrderDeliveryId,   
-				DeliveryId,        
-				OrderId,           
-				DriverId,          
-				AddressId,        
-				ProductCartUserId, 
-				DeliveryStartDate, 
-				DeliveryEndDate,   
-				Completed         
-			)
-			VALUES
-			(
-				@OrderDeliveryId,   
-				@DeliveryId,        
-				@OrderId,           
-				@DriverId,          
-				@AddressId,        
-				@ProductCartUserId, 
-				@DeliveryStartDate, 
-				@DeliveryEndDate,   
-				@Completed
-			)
 
-			SET @OrderDeliveryId = SCOPE_IDENTITY();
-			PRINT CONCAT(@OrderDeliveryId, ' ', 'added successfully!');
+			UPDATE o
+				SET DeliveryId = @DeliveryId,        
+					OrderId = @OrderId,           
+					DriverId = @DriverId,          
+					AddressId = @AddressId,        
+					ProductCartUserId = @ProductCartUserId, 
+					DeliveryStartDate = @DeliveryStartDate, 
+					DeliveryEndDate = @DeliveryEndDate,   
+					Completed = @Completed
+			FROM App.OrderDelivery o 
+			WHERE OrderDeliveryId = @OrderDeliveryId
+
+			PRINT CONCAT(@OrderDeliveryId, ' ', 'updated successfully!');
 		COMMIT TRANSACTION @StoredProcedureName	
 	END TRY
 

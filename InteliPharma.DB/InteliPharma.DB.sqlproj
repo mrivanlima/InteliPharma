@@ -327,6 +327,10 @@
     <Build Include="App\Stored Procedures\usp_api_OrderPaymentReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_OrderPaymentUpdateById.sql" />
     <Build Include="App\Stored Procedures\usp_api_OrderDeliveryCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_OrderDeliveryDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_OrderDeliveryReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_OrderDeliveryReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_OrderDeliveryUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
