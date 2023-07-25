@@ -336,6 +336,11 @@
     <Build Include="App\Stored Procedures\usp_api_OrderReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_OrderReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_OrderUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_OperationNatureCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_OperationNatureDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_OperationNatureReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_OperationNatureReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_OperationNatureUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
