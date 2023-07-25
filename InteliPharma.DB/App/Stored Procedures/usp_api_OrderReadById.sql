@@ -1,0 +1,14 @@
+﻿
+CREATE   PROCEDURE App.usp_api_OrderReadById
+	@OrderId SMALLINT
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+	SELECT	OrderId,
+			CartId,
+			TotalPrice
+	FROM App.[Order]
+	WHERE OrderId = @OrderId;
+END;
