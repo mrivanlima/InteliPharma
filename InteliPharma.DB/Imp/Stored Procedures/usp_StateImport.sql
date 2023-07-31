@@ -1,6 +1,6 @@
 ﻿
 
-CREATE   PROCEDURE [imp].usp_StateImport
+CREATE   PROCEDURE [Imp].[usp_StateImport]
 AS
 BEGIN
 	DECLARE @json NVARCHAR(MAX);
@@ -224,16 +224,57 @@ BEGIN
 			}
 		  ]';
 
-	SELECT 
-		REPLACE(Id, 'BR-', '') AS Id,
-		Title,
+
+DROP TABLE IF EXISTS #Temp;
+SELECT 
+		TRIM(REPLACE(Id, 'BR-', '')) AS StateId,
+		TRIM(Title) AS Title,
 		Latitude,
 		Longitude
-
+    INTO #Temp
 	FROM OPENJSON(@json) WITH (
 		Id VARCHAR(MAX) '$.id',
 		Title VARCHAR(MAX) '$.title', 
-		Latitude VARCHAR(MAX) '$.lat', 
-		Longitude VARCHAR(MAX) '$.long'
+		Latitude DECIMAL(10, 2) '$.lat', 
+		Longitude DECIMAL(10, 2) '$.long'
 		);
+
+MERGE [App].[State] AS Target
+USING #Temp	AS Source
+	ON Source.StateId = Target.StateAbbreviation
+WHEN NOT MATCHED BY TARGET THEN
+	INSERT 
+	(
+		 [StateName]
+		,[StateNameASCII]
+		,[StateAbbreviation]
+		,[Longitude]
+		,[Latitude]
+	)
+	VALUES
+	(
+		 Source.Title
+		,App.replace_special_char(Source.Title)
+		,Source.StateId
+		,Source.Longitude
+		,Source.Latitude
+	)
+WHEN MATCHED
+AND 
+(
+	Target.StateName <> Source.Title
+	OR Target.Longitude <> Source.Longitude
+	OR Target.Latitude <> Source.Latitude
+)
+THEN UPDATE SET
+    Target.StateNameASCII	= TRIM(App.replace_special_char(Source.Title)),
+	Target.StateName = TRIM(Source.Title),
+	Target.Longitude = Source.Longitude,
+	Target.Latitude = Source.Latitude
+
+WHEN NOT MATCHED BY Source THEN
+    DELETE
+;
+
+DROP TABLE IF EXISTS #Temp;
 END;
