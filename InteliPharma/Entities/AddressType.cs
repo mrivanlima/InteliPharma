@@ -8,7 +8,7 @@ namespace InteliPharma.Library.Entities
 {
     public class AddressType
     {
-        public AddressType() { }
+        public AddressType () { }
         public short AddressTypeId { get; set; }
         public string AddressTypeDescription { get; set; } = string.Empty;
     }
