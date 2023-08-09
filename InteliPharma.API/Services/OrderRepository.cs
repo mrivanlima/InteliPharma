@@ -6,35 +6,36 @@ using System.Data.SqlClient;
 
 namespace InteliPharma.API.Services
 {
-    public class OperationNatureRepository : IOperationNatureRepository
+    public class OrderRepository : IOrderRepository
     {
         private readonly IDbConn _connect;
         private readonly SqlConnection _connection;
 
-        public OperationNatureRepository(IDbConn connect)
+        public OrderRepository(IDbConn connect)
         {
             _connect = connect;
             _connection = connect.GetConnection() ?? throw new ArgumentNullException(nameof(_connect));
         }
 
-        public async Task<OperationNature> CreateOperationNatureAsync(OperationNature operationnature)
+        public async Task<Order> CreateOrderAsync(Order order)
         {
-            SqlParameter outputOperationNatureId;
+            SqlParameter outputOrderId;
             SqlCommand cmd;
 
             try
             {
-                outputOperationNatureId = new SqlParameter("@OperationNatureId", SqlDbType.SmallInt);
-                outputOperationNatureId.Direction = ParameterDirection.Output;
-                cmd = new SqlCommand("[App].[usp_api_OperationNatureCreate]", _connection);
+                outputOrderId = new SqlParameter("@OrderId", SqlDbType.BigInt);
+                outputOrderId.Direction = ParameterDirection.Output;
+                cmd = new SqlCommand("[App].[usp_api_OrderCreate]", _connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("OperationNatureName", operationnature.OperationNatureName);
-                cmd.Parameters.Add(outputOperationNatureId);
+                cmd.Parameters.AddWithValue("CartId", order.CartId);
+                cmd.Parameters.AddWithValue("TotalPrice", order.TotalPrice);
+                cmd.Parameters.Add(outputOrderId);
 
                 _connection.Open();
 
                 var result = await cmd.ExecuteNonQueryAsync();
-                operationnature.OperationNatureId = (byte)outputOperationNatureId.Value;
+                order.OrderId = (long)outputOrderId.Value;
             }
             catch (Exception ex)
             {
@@ -44,28 +45,28 @@ namespace InteliPharma.API.Services
             {
                 await _connection.CloseAsync();
             }
-            return operationnature;
+            return order;
         }
 
-        public async Task<OperationNature> GetOperationNatureAsyncById(short operationnatureId)
+        public async Task<Order> GetOrderAsyncById(long orderId)
         {
             SqlDataReader? sqlDr = null;
-            OperationNature operationnature = new OperationNature();
-            SqlCommand cmd = new SqlCommand("[App].[usp_api_OperationNatureReadById]", _connection);
+            Order order = new Order();
+            SqlCommand cmd = new SqlCommand("[App].[usp_api_OrderReadById]", _connection);
 
             try
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@OperationNatureId", operationnatureId));
+                cmd.Parameters.Add(new SqlParameter("@OrderId", orderId));
                 _connection.Open();
 
                 sqlDr = await cmd.ExecuteReaderAsync();
 
                 while (sqlDr.Read())
                 {
-                    operationnature.OperationNatureId = operationnatureId;
-                    operationnature.OperationNatureName = (string)sqlDr["OperationNatureName"];
-                    
+                    order.OrderId = orderId;
+                    order.CartId = (long)sqlDr["CartId"];
+                    order.TotalPrice = (decimal)sqlDr["TotalPrice"];
                 }
 
             }
@@ -81,15 +82,15 @@ namespace InteliPharma.API.Services
                     sqlDr.Close();
                 }
             }
-            return operationnature;
+            return order;
         }
 
-        public async Task<IEnumerable<OperationNature>> GetAllOperationsNatureAsync()
+        public async Task<IEnumerable<Order>> GetAllOrdersAsync()
         {
-            OperationNature operationnature;
+            Order order;
             SqlDataReader? sqlDr = null;
-            ICollection<OperationNature> operationnatures = new List<OperationNature>();
-            SqlCommand cmd = new SqlCommand("[App].[usp_api_OperationNatureReadAll]", _connection);
+            ICollection<Order> orders = new List<Order>();
+            SqlCommand cmd = new SqlCommand("[App].[usp_api_OrderReadAll]", _connection);
 
             try
             {
@@ -100,10 +101,10 @@ namespace InteliPharma.API.Services
 
                 while (sqlDr.Read())
                 {
-                    operationnature = new OperationNature();
-                    operationnature.OperationNatureId = (short)sqlDr["OperationNatureId"];
-                    operationnature.OperationNatureName = (string)sqlDr["OperationNatureName"];
-                    operationnatures.Add(operationnature);
+                    order = new Order();
+                    order.OrderId = (long)sqlDr["OrderId"];
+                    order.CartId = (long)sqlDr["CartId"];
+                    order.TotalPrice = (decimal)sqlDr["TotalPrice"];
                 }
 
             }
@@ -119,19 +120,20 @@ namespace InteliPharma.API.Services
                     sqlDr.Close();
                 }
             }
-            return operationnatures;
+            return orders;
         }
 
-        public async Task<OperationNature> UpdateOperationNatureAsyncById(OperationNature operationnature)
+        public async Task<Order> UpdateOrderAsyncById(Order order)
         {
             SqlCommand cmd;
 
             try
             {
-                cmd = new SqlCommand("[App].[usp_api_OperationNatureUpdateById]", _connection);
+                cmd = new SqlCommand("[App].[usp_api_OrderUpdateById]", _connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("OperationNatureId", operationnature.OperationNatureId);
-                cmd.Parameters.AddWithValue("OperationNatureName", operationnature.OperationNatureName);
+                cmd.Parameters.AddWithValue("OrderId", order.OrderId);
+                cmd.Parameters.AddWithValue("CartId", order.CartId);
+                cmd.Parameters.AddWithValue("TotalPrice", order.TotalPrice);
                 _connection.Open();
                 var result = await cmd.ExecuteNonQueryAsync();
             }
@@ -143,20 +145,20 @@ namespace InteliPharma.API.Services
             {
                 await _connection.CloseAsync();
             }
-            return operationnature;
+            return order;
         }
 
 
-        public async Task<bool> DeleteOperationNatureAsyncById(short operationnatureId)
+        public async Task<bool> DeleteOrderAsyncById(long orderId)
         {
             SqlCommand cmd;
             bool isDeleted = true;
 
             try
             {
-                cmd = new SqlCommand("[App].[usp_api_OperationNatureDeleteById]", _connection);
+                cmd = new SqlCommand("[App].[usp_api_OrderDeleteById]", _connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("OperationNatureId", operationnatureId);
+                cmd.Parameters.AddWithValue("OrderId", orderId);
 
                 _connection.Open();
                 var result = await cmd.ExecuteNonQueryAsync();

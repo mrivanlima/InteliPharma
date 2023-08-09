@@ -89,7 +89,7 @@ namespace InteliPharma.API.Services
             return neighborhood;
         }
 
-        public async Task<IEnumerable<Neighborhood>> GetAllNeighborhoodAsync()
+        public async Task<IEnumerable<Neighborhood>> GetAllNeighborhoodsAsync()
         {
             Neighborhood neighborhood;
             SqlDataReader? sqlDr = null;
@@ -106,7 +106,7 @@ namespace InteliPharma.API.Services
                 while (sqlDr.Read())
                 {
                     neighborhood = new Neighborhood();
-                    neighborhood.NeighborhoodId = (short)sqlDr["Neighborhood"];
+                    neighborhood.NeighborhoodId = (short)sqlDr["NeighborhoodId"];
                     neighborhood.NeighborhoodName = (string)sqlDr["NeighborhoodName"];
                     neighborhood.CityId = (short)sqlDr["CityId"];
                     neighborhood.Longitude = (decimal)sqlDr["Longitude"];
