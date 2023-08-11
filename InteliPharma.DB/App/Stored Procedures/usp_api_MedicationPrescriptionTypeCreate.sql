@@ -6,5 +6,7 @@
 	@MedicationPrescriptionTypeId BIGINT = NULL OUTPUT
 AS
 BEGIN
-	
+
+	SET NOCOUNT ON;
+
 END
