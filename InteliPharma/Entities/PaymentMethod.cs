@@ -9,7 +9,7 @@ namespace InteliPharma.Library.Entities
     public class PaymentMethod
     {
         public PaymentMethod() { }
-        public byte PaymentmethodId { get; set; }
-        public string PaymenthMethodName { get; set; } = string.Empty;
+        public byte PaymentMethodId { get; set; }
+        public string PaymentMethodName { get; set; } = string.Empty;
     }
 }
