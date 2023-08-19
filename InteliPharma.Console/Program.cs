@@ -12,29 +12,43 @@ using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Data.SqlClient;
+using Nancy;
 
 var builder = new ConfigurationBuilder();
 builder.SetBasePath(Directory.GetCurrentDirectory())
        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+//Connect connect = new Connect();
+//var connection = connect.GetContext();
+
+//Anvisa d = new Anvisa(connect);
+//d.ConsultarComercio();
+
+
 
 IConfiguration config = builder.Build();
 
 string connectionString = config.GetSection("ConnectionString").GetSection("DevConnection").Value;
 
 
+
 string path = @"C:\Users\IvanLima\Documents\OpenCEP-main\v1";
 const Int32 BufferSize = 128;
-//FileReader files = new FileReader();
-//files.ReadFilesFromFolder(path);
+FileReader files = new FileReader();
+files.ReadFilesFromFolder(path);
 
-string connection = connectionString;
-var dbOptions = new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer(connection).Options;
+string connectionS = connectionString;
+var dbOptions = new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer(connectionS).Options;
 var dbContext = new ApplicationDbContext(dbOptions);
+
+//Anvisa d = new Anvisa(connect);
+
+//d.AnvisaConsultaComercios("7327886", dbContext);
 
 
 List<string> ceps = new List<string>();
 
-using (var fileStream = File.OpenRead(@"C:\Users\IvanLima\Documents\ceps\CE\CE.txt"))
+using (var fileStream = File.OpenRead(@"C:\Users\IvanLima\Documents\ceps\PR\PR.txt"))
 using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, BufferSize))
 {
     String line;
@@ -63,16 +77,22 @@ foreach (var c in ceps)
     }
 }
 
+Connect connect = new Connect();
+var connection = connect.GetContext();
 
-WebScrapperDynamic d = new WebScrapperDynamic();
+Anvisa d = new Anvisa(connect);
+d.ConsultarComercio();
 
 
-List<string> productDetail = dbContext.ProductDetails.Select(e => e.Registro).ToList();
 
-var medications = dbContext.Medication.Select(m => new Tuple<string, string>(m.Registro, m.ProcessoNoAccent)).ToList();
-var bulas = dbContext.Bula.Select(b => b.BulaRegister).ToList();
 
-var bu = medications.Where(e => !bulas.Contains(e.Item1)).ToList().Distinct();
+
+//List<string> productDetail = dbContext.ProductDetails.Select(e => e.Registro).ToList();
+
+//var medications = dbContext.Medication.Select(m => new Tuple<string, string>(m.Registro, m.ProcessoNoAccent)).ToList();
+//var bulas = dbContext.Bula.Select(b => b.BulaRegister).ToList();
+
+//var bu = medications.Where(e => !bulas.Contains(e.Item1)).ToList().Distinct();
 
 //List<ProductDetail> productDetail = dbContext.ProductDetails.ToList();
 
@@ -80,31 +100,31 @@ var bu = medications.Where(e => !bulas.Contains(e.Item1)).ToList().Distinct();
 //.Where(m => dbContext.ProductDetails.Any(d => d.Registro == m.Registro))
 //.ToList();
 
-var processos = medications.Where(e => !productDetail.Contains(e.Item1)).ToList();
+//var processos = medications.Where(e => !productDetail.Contains(e.Item1)).ToList();
 
-List<string> list = new List<string>();
+//List<string> list = new List<string>();
 
 
-using (var fileStream = File.OpenRead(@"C:\Users\IvanLima\Documents\Exception\except.txt"))
-using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, BufferSize))
-{
-    String line;
-    while ((line = streamReader.ReadLine()) != null)
-    {
-        list.Add(line);
-    }
-}
+//using (var fileStream = File.OpenRead(@"C:\Users\IvanLima\Documents\Exception\except.txt"))
+//using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, BufferSize))
+//{
+//    String line;
+//    while ((line = streamReader.ReadLine()) != null)
+//    {
+//        list.Add(line);
+//    }
+//}
 
-bu = bu.Where(e => !list.Contains(e.Item1)).ToList().Distinct();
-Console.WriteLine(bu.Count());
-var i = 0;
-foreach (var b in bu)
-{
-    d.DynamicScrapBula(b.Item1, dbContext);
-    Console.WriteLine(++i);
-}
+//bu = bu.Where(e => !list.Contains(e.Item1)).ToList().Distinct();
+//Console.WriteLine(bu.Count());
+//var i = 0;
+//foreach (var b in bu)
+//{
+//    d.DynamicScrapBula(b.Item1, dbContext);
+//    Console.WriteLine(++i);
+//}
 
-////WebScrapperDynamic d = new WebScrapperDynamic();
+////Anvisa d = new Anvisa();
 //foreach (var p in processos)
 //{
 //    d.DynamicScrap(p.Item2, dbContext);
@@ -148,7 +168,7 @@ foreach (var b in bu)
 //        zipCodeInfo.bairro = c.bairro;
 //        zipCodeInfo.localidade = c.cidade;
 //        zipCodeInfo.uf = c.estado;
-        
+
 
 //        if (dbContext != null)
 //        {

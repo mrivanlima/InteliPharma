@@ -21,5 +21,7 @@ namespace InteliPharma.API.Services.DBServices
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
             return builder.Build();
         }
+
+       
     }
 }
