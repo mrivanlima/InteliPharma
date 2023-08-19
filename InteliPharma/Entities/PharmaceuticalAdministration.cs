@@ -9,7 +9,7 @@ namespace InteliPharma.Library.Entities
     public class PharmaceuticalAdministration
     {
         public PharmaceuticalAdministration() { }
-        public int PharmaceuticalAdministartionId { get; set; }
-        public string PharmaceuticalAdministrationDesctiption { get; set; } = string.Empty;
+        public int PharmaceuticalAdministrationId { get; set; }
+        public string PharmaceuticalAdministrationDescription { get; set; } = string.Empty;
     }
 }

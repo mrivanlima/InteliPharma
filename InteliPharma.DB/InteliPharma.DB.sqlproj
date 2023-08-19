@@ -9,8 +9,7 @@
     <ProjectGuid>{ecc2a260-2da8-4a56-9c7a-6922d83df889}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
-    <RootPath>
-    </RootPath>
+    <RootPath />
     <RootNamespace>InteliPharma.DB</RootNamespace>
     <AssemblyName>InteliPharma.DB</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
@@ -48,7 +47,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
-    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
     <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
     <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
   </PropertyGroup>
@@ -341,6 +339,16 @@
     <Build Include="App\Stored Procedures\usp_api_OperationNatureReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_OperationNatureReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_OperationNatureUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationTypeCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationTypeReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationTypeReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationTypeUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationTypeDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationPrescriptionTypeCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationPrescriptionTypeDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationPrescriptionTypeUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationPrescriptionTypeReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationPrescriptionTypeReadById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />
