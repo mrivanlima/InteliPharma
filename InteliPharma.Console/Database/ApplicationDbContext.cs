@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace InteliPharma.Console.Database
 {
-    public class ApplicationDbContext :DbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<ZipCodeInfo> ZipCodeInfo { get; set; }
@@ -20,6 +20,41 @@ namespace InteliPharma.Console.Database
         public DbSet<ProductPresentation> ProductPresentations { get; set; }
         public DbSet<Bula> Bula { get; set; }
         public DbSet<Cep> Ceps { get; set; }
+        public DbSet<Comercio> Comercios { get; set; }
+        public DbSet<Empresa> Empresas { get; set; }
+    }
+
+    [Table("consulta_empresas_nacionais", Schema = "imp")]
+    public class Empresa
+    {
+
+        [Key]
+        public string Numero { get; set; } = String.Empty;
+        public string CNPJ { get; set; } = String.Empty;
+        public string EmpresaNome { get; set; } = String.Empty;
+        public string Produto { get; set; } = String.Empty;
+        public string Situacao { get; set; } = String.Empty;
+        public string Cidade { get; set; } = String.Empty;
+        public string UF { get; set; } = String.Empty;
+        public string Autorizacao { get; set; } = String.Empty;
+        public string Concessao { get; set; } = String.Empty;
+
+    }
+
+    [Table("Comercio", Schema = "imp")]
+    public class Comercio
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ComercioId { get; set; }
+        public string Numero { get; set; } = String.Empty;
+        public string RazaoSocial { get; set; } = String.Empty;
+        public string CNPJ { get; set; } = String.Empty;
+        public string Fantasia { get; set; } = String.Empty;
+        public string Web { get; set; } = String.Empty;
+        public string Endereco { get; set; } = String.Empty;
+        public string Cidade { get; set; } = String.Empty;
+        public string SAC { get; set; } = String.Empty;
     }
 
     [Table("CepInfo2", Schema = "imp")]
