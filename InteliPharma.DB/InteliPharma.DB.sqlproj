@@ -365,6 +365,16 @@
     <Build Include="App\Stored Procedures\usp_api_ManufacturerReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_ManufacturerReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ManufacturerUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_LaboratoryCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_LaboratoryDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_LaboratoryReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_LaboratoryReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_LaboratoryUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_IndicationCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_IndicationDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_IndicationReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_IndicationReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_IndicationUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />

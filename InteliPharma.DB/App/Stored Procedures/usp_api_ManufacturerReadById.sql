@@ -6,7 +6,8 @@ BEGIN
 	SET NOCOUNT ON;
 	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 
-	SELECT	ManufacturerName,
+	SELECT	ManufacturerId,
+			ManufacturerName,
 			ManufacturerPhoneNumber
 	FROM App.Manufacturer
 	WHERE ManufacturerId = @ManufacturerId;
