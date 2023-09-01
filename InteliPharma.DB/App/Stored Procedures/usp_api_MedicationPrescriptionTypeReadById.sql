@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE App.usp_api_MedicationPrescriptionTypeReadById
+﻿
+CREATE   PROCEDURE App.usp_api_MedicationPrescriptionTypeReadById
 	@MedicationPrescriptionTypeId BIGINT
 AS
 BEGIN

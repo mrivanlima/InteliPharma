@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE usp_api_ActivePrincipleDrugCreate
+﻿
+CREATE   PROCEDURE usp_api_ActivePrincipleDrugCreate
 	@ActivePrincipleDrugId INT,
 	@DrugId INT,
 	@ActivePrincipleId INT

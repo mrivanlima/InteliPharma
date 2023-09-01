@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE App.usp_api_MedicationPrescriptionTypeUpdateById
+﻿
+CREATE   PROCEDURE App.usp_api_MedicationPrescriptionTypeUpdateById
 	@MedicationId INT,
 	@PrescriptionId BIGINT,
 	@PrescriptionTypeId TINYINT = NULL,

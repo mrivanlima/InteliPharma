@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE App.usp_api_MedicationPrescriptionTypeDeleteById
+﻿
+CREATE   PROCEDURE App.usp_api_MedicationPrescriptionTypeDeleteById
 	@MedicationPrescriptionTypeId	BIGINT
 AS
 BEGIN

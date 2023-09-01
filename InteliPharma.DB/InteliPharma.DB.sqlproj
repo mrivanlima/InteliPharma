@@ -350,6 +350,21 @@
     <Build Include="App\Stored Procedures\usp_api_MedicationPrescriptionTypeReadAll.sql" />
     <Build Include="App\Stored Procedures\usp_api_MedicationPrescriptionTypeReadById.sql" />
     <Build Include="App\Stored Procedures\usp_api_ActivePrincipleDrugCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MedicationUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MeasurementCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MeasurementDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MeasurementReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MeasurementReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_MeasurementUpdateById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ManufacturerCreate.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ManufacturerDeleteById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ManufacturerReadAll.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ManufacturerReadById.sql" />
+    <Build Include="App\Stored Procedures\usp_api_ManufacturerUpdateById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="InteliPharma.DB.publish.xml" />

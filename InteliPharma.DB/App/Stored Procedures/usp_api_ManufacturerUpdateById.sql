@@ -1,22 +1,23 @@
 ﻿
-CREATE   PROCEDURE App.usp_api_MedicationTypeUpdateById
-	@MedicationTypeId	TINYINT			NOT NULL,
-	@MedicationTypeName VARCHAR (20)	NOT NULL
+CREATE   PROCEDURE App.usp_api_ManufacturerUpdateById
+	@ManufacturerId SMALLINT					NOT NULL,
+	@ManufacturerName VARCHAR (100)				NOT NULL,
+	@ManufacturerPhoneNumber VARCHAR(13)		NULL
 AS
 BEGIN
 
 	SET NOCOUNT ON;
 	SET XACT_ABORT ON;
 
-	DECLARE @StoredProcedureName	VARCHAR (100) = 'usp_api_MedicationTypeUpdateById';
+	DECLARE @StoredProcedureName	VARCHAR (100) = 'usp_api_ManufacturerUpdateById';
 	DECLARE @ErrorMessage			VARCHAR (100) = CONCAT('Error ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR (100);
 
-	SET @MedicationTypeName = TRIM(@MedicationTypeName);
+	SET @ManufacturerName = TRIM(@ManufacturerName);
 
-	IF NOT EXISTS (SELECT * FROM App.MedicationType WHERE MedicationTypeId = @MedicationTypeId)
+	IF NOT EXISTS (SELECT * FROM App.Manufacturer WHERE ManufacturerId = @ManufacturerId)
 	BEGIN
-		SET @ErrorMessage = CONCAT(@MedicationTypeId, ' not found!');
+		SET @ErrorMessage = CONCAT(@ManufacturerId, ' not found!');
 		THROW 50005, @ErrorMessage, 1;
 	END
 
@@ -24,11 +25,12 @@ BEGIN
 		BEGIN TRANSACTION @StoredProcedureName
 
 			UPDATE m
-			SET MedicationTypeName = @MedicationTypeName
-			FROM App.MedicationType m
-			WHERE MedicationTypeId = @MedicationTypeId
+			SET ManufacturerName = @ManufacturerName,
+				ManufacturerPhoneNumber = @ManufacturerPhoneNumber
+			FROM App.Manufacturer m
+			WHERE ManufacturerId = @ManufacturerId
 
-			PRINT CONCAT(@MedicationTypeName, ' updated successfully!');
+			PRINT CONCAT(@ManufacturerName, ' updated successfully!');
 		COMMIT TRANSACTION @StoredProcedureName
 	END TRY
 

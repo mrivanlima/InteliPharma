@@ -1,4 +1,5 @@
-﻿CREATE   PROCEDURE usp_api_ActivePrincipleCreate
+﻿
+CREATE   PROCEDURE usp_api_ActivePrincipleCreate
 	@ActivePrincipleId INT = NULL OUTPUT,
 	@ActivePrincipleName VARCHAR(400),
 	@ActivePrincipleASCII VARCHAR(400)
