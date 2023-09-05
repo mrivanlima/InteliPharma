@@ -36,13 +36,13 @@ namespace InteliPharma.Console
 
         public List<string> InserirEmpresaNoBanco()
         {
-            var numeros = _dbContext.Empresas.Select(s => s.Numero).ToList();
+            var numeros = _dbContext.Empresas.Select(s => s.Numero).OrderByDescending(s=>s).ToList();
             return numeros;
         }
 
         public void ConsultarComercio()
         {
-            var numeros = InserirEmpresaNoBanco().Except(AcharEmpresasInseridasNoBanco()).ToList();
+            var numeros = InserirEmpresaNoBanco().Except(AcharEmpresasInseridasNoBanco()).OrderByDescending(s=>s).ToList();
 
             foreach (var numero in numeros)
             {

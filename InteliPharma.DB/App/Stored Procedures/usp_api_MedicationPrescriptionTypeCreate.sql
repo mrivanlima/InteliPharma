@@ -15,6 +15,26 @@ BEGIN
 	DECLARE @ErrorMessage			VARCHAR(100) = CONCAT('Error ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR(100);
 
+
+	IF EXISTS (
+	           SELECT * 
+	           FROM app.MedicationPrescriptionType 
+			   WHERE MedicationId = @MedicationId 
+			   AND PrescriptionId = @PrescriptionId 
+			   AND PrescriptionTypeId = @PrescriptionTypeId)
+	BEGIN
+		SET @WarningMessage = 'MedicationPrescriptionType already exists!';
+		PRINT @WarningMessage;
+		SET @MedicationPrescriptionTypeId = (
+							SELECT TOP 1 MedicationPrescriptionTypeId
+						    FROM app.MedicationPrescriptionType 
+						    WHERE MedicationId = @MedicationId 
+						    AND PrescriptionId = @PrescriptionId 
+						    AND PrescriptionTypeId = @PrescriptionTypeId
+						);
+		RETURN;
+	END;
+
 	BEGIN TRY 
 		BEGIN TRANSACTION @StoredProcedureName
 			INSERT INTO App.MedicationPrescriptionType
