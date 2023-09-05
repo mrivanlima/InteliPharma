@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace InteliPharma.API.Controllers
 {
     [ApiController]
-    [Route("api/Estado")]
+    [Route("api/estado")]
     public class StateController : ControllerBase
     {
 
@@ -22,6 +22,18 @@ namespace InteliPharma.API.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper)); ;   
         }
 
+        [HttpPost(Name = "CriarEstado")]
+        public async Task<ActionResult<StateViewModel>> CreateState(StateViewModel state)
+        {
+            var result = _mapper.Map<State>(state);
+            var StateViewModel = await _stateRepository.CreateStateAsync(result);
+            if (StateViewModel == null)
+            {
+                return BadRequest();
+            }
+            return CreatedAtRoute("estado", new { StateId = result.StateId }, _mapper.Map<StateViewModel>(result));
+        }
+
         [HttpGet("{stateId}", Name = "estado")]
         public async Task<ActionResult<StateViewModel>> GetStateById(byte stateId)
         {
@@ -30,6 +42,7 @@ namespace InteliPharma.API.Controllers
             {
                 return NotFound();
             }
+
             return Ok(_mapper.Map<StateViewModel>(state));
         }
 
@@ -44,17 +57,7 @@ namespace InteliPharma.API.Controllers
             return Ok(_mapper.Map<IEnumerable<StateViewModel>>(states));
         }
 
-        [HttpPost(Name ="AdicionarEstado")]
-        public async Task<ActionResult<StateViewModel>> CreateState(StateViewModel state)
-        {
-            var result = _mapper.Map<State>(state);
-            var StateViewModel = await _stateRepository.CreateStateAsync(result);
-            if (StateViewModel == null)
-            {
-                return BadRequest();
-            }
-            return CreatedAtRoute("estado", new { StateId = result.StateId },  _mapper.Map<StateViewModel>(result));
-        }
+
 
         [HttpPut(Name = "AtualizarEstado")]
         public async Task<ActionResult<StateViewModel>> UpdateState(StateViewModel state)
