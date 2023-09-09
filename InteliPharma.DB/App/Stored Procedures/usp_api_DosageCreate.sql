@@ -1,44 +1,44 @@
 ﻿
-CREATE   PROCEDURE App.usp_api_IndicationCreate
-	@IndicationId INT						NOT NULL,
-	@IndicationDescription VARCHAR(100)		NOT NULL
+CREATE   PROCEDURE App.usp_api_DosageCreate
+	@DosageId INT					= NULL OUTPUT,
+	@DosageValue VARCHAR(100)		NOT NULL
 AS
 BEGIN
 	
 	SET NOCOUNT ON;
 	SET XACT_ABORT ON;
 
-	DECLARE @StoredProcedureName	VARCHAR(100) = 'usp_api_IndicationCreate';
+	DECLARE @StoredProcedureName	VARCHAR(100) = 'usp_api_DosageCreate';
 	DECLARE @ErrorMessage			VARCHAR(100) = CONCAT('Error ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR(100);
 
-	SET @IndicationDescription = TRIM(@IndicationDescription);
+	SET @DosageValue = TRIM(@DosageValue);
 
-	IF EXISTS (SELECT * FROM App.Indication WHERE IndicationDescription = @IndicationDescription)
+	IF EXISTS (SELECT * FROM App.Dosage WHERE DosageId = @DosageValue)
 	BEGIN
-		SET @WarningMessage = CONCAT(@IndicationDescription, ' already exists!');
+		SET @WarningMessage = CONCAT(@DosageValue, ' already exists!');
 		PRINT @WarningMessage;
-		SET @IndicationId = (
-							SELECT TOP (1) @IndicationId
-							FROM App.Indication
-							WHERE IndicationDescription = @IndicationId
+		SET @DosageId = (
+							SELECT TOP (1) @DosageId
+							FROM App.Dosage
+							WHERE DosageValue = @DosageValue
 						);
 		RETURN;
 	END;
 
 	BEGIN TRY
 		BEGIN TRANSACTION @StoredProcedureName
-			INSERT INTO App.Indication
+			INSERT INTO App.Dosage
 			(
-				IndicationDescription
+				DosageValue
 			)
 			VALUES
 			(
-				@IndicationDescription
+				@DosageValue
 			)
 
-			SET @IndicationId = SCOPE_IDENTITY();
-			PRINT CONCAT(@IndicationDescription, ' added successfully!');
+			SET @DosageId = SCOPE_IDENTITY();
+			PRINT CONCAT(@DosageValue, ' added successfully!');
 		COMMIT TRANSACTION @StoredProcedureName;
 	END TRY
 

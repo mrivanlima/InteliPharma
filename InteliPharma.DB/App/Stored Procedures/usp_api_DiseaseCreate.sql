@@ -1,44 +1,44 @@
 ﻿
-CREATE   PROCEDURE App.usp_api_IndicationCreate
-	@IndicationId INT						NOT NULL,
-	@IndicationDescription VARCHAR(100)		NOT NULL
+CREATE   PROCEDURE App.usp_api_DiseaseCreate
+	@DiseaseId INT					= NULL OUTPUT,
+	@DieseaseName VARCHAR(50)		= NULL
 AS
 BEGIN
 	
 	SET NOCOUNT ON;
 	SET XACT_ABORT ON;
 
-	DECLARE @StoredProcedureName	VARCHAR(100) = 'usp_api_IndicationCreate';
+	DECLARE @StoredProcedureName	VARCHAR(100) = 'usp_api_DiseaseCreate';
 	DECLARE @ErrorMessage			VARCHAR(100) = CONCAT('Error ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR(100);
 
-	SET @IndicationDescription = TRIM(@IndicationDescription);
+	SET @DieseaseName = TRIM(@DieseaseName);
 
-	IF EXISTS (SELECT * FROM App.Indication WHERE IndicationDescription = @IndicationDescription)
+	IF EXISTS (SELECT * FROM App.Disease WHERE DieseaseName = @DieseaseName)
 	BEGIN
-		SET @WarningMessage = CONCAT(@IndicationDescription, ' already exists!');
+		SET @WarningMessage = CONCAT(@DieseaseName, ' already exists!');
 		PRINT @WarningMessage;
-		SET @IndicationId = (
-							SELECT TOP (1) @IndicationId
-							FROM App.Indication
-							WHERE IndicationDescription = @IndicationId
+		SET @DiseaseId = (
+							SELECT TOP (1) @DiseaseId
+							FROM App.Disease
+							WHERE DieseaseName = @DieseaseName
 						);
 		RETURN;
 	END;
 
 	BEGIN TRY
 		BEGIN TRANSACTION @StoredProcedureName
-			INSERT INTO App.Indication
+			INSERT INTO App.Disease
 			(
-				IndicationDescription
+				DieseaseName
 			)
 			VALUES
 			(
-				@IndicationDescription
+				@DieseaseName
 			)
 
-			SET @IndicationId = SCOPE_IDENTITY();
-			PRINT CONCAT(@IndicationDescription, ' added successfully!');
+			SET @DiseaseId = SCOPE_IDENTITY();
+			PRINT CONCAT(@DieseaseName, ' added successfully!');
 		COMMIT TRANSACTION @StoredProcedureName;
 	END TRY
 

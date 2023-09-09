@@ -1,44 +1,47 @@
 ﻿
-CREATE   PROCEDURE App.usp_api_IndicationCreate
-	@IndicationId INT						NOT NULL,
-	@IndicationDescription VARCHAR(100)		NOT NULL
+CREATE   PROCEDURE App.usp_api_FacilityCreate
+	@FacilityId INT				= NULL OUTPUT,
+	@Facilityname VARCHAR(100)	= NULL,
+	@AddressId INT				= NULL
 AS
 BEGIN
 	
 	SET NOCOUNT ON;
 	SET XACT_ABORT ON;
 
-	DECLARE @StoredProcedureName	VARCHAR(100) = 'usp_api_IndicationCreate';
+	DECLARE @StoredProcedureName	VARCHAR(100) = 'usp_api_FacilityCreate';
 	DECLARE @ErrorMessage			VARCHAR(100) = CONCAT('Error ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR(100);
 
-	SET @IndicationDescription = TRIM(@IndicationDescription);
+	SET @Facilityname = TRIM(@Facilityname);
 
-	IF EXISTS (SELECT * FROM App.Indication WHERE IndicationDescription = @IndicationDescription)
+	IF EXISTS (SELECT * FROM App.Facility WHERE Facilityname = @Facilityname)
 	BEGIN
-		SET @WarningMessage = CONCAT(@IndicationDescription, ' already exists!');
+		SET @WarningMessage = CONCAT(@Facilityname, ' already exists!');
 		PRINT @WarningMessage;
-		SET @IndicationId = (
-							SELECT TOP (1) @IndicationId
-							FROM App.Indication
-							WHERE IndicationDescription = @IndicationId
+		SET @FacilityId = (
+							SELECT TOP (1) @FacilityId
+							FROM App.Facility
+							WHERE Facilityname = @Facilityname
 						);
 		RETURN;
 	END;
 
 	BEGIN TRY
 		BEGIN TRANSACTION @StoredProcedureName
-			INSERT INTO App.Indication
+			INSERT INTO App.Facility
 			(
-				IndicationDescription
+				Facilityname,
+				AddressId
 			)
 			VALUES
 			(
-				@IndicationDescription
+				@Facilityname,
+				@AddressId
 			)
 
-			SET @IndicationId = SCOPE_IDENTITY();
-			PRINT CONCAT(@IndicationDescription, ' added successfully!');
+			SET @FacilityId = SCOPE_IDENTITY();
+			PRINT CONCAT(@Facilityname, ' added successfully!');
 		COMMIT TRANSACTION @StoredProcedureName;
 	END TRY
 
