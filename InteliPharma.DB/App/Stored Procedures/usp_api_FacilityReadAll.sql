@@ -6,7 +6,7 @@ BEGIN
 	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 
 	SELECT	FacilityId,
-			Facilityname,
+			FacilityName,
 			AddressId
 	FROM App.Facility;
 END;

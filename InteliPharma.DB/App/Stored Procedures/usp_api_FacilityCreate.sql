@@ -1,7 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_FacilityCreate
 	@FacilityId	INT					= NULL OUTPUT,
-	@Facilityname	VARCHAR(100)	= NULL,
+	@FacilityName	VARCHAR(100)	= NULL,
 	@AddressId	INT					= NULL
 AS
 BEGIN
@@ -13,16 +13,16 @@ BEGIN
 	DECLARE @ErrorMessage			VARCHAR(100) = CONCAT('Error ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR(100);
 
-	SET @Facilityname = TRIM(@Facilityname);
+	SET @FacilityName = TRIM(@FacilityName);
 
-	IF EXISTS (SELECT * FROM App.Facility WHERE Facilityname = @Facilityname)
+	IF EXISTS (SELECT * FROM App.Facility WHERE FacilityName = @FacilityName)
 	BEGIN
-		SET @WarningMessage = CONCAT(@Facilityname, ' already exists!');
+		SET @WarningMessage = CONCAT(@FacilityName, ' already exists!');
 		PRINT @WarningMessage;
 		SET @FacilityId = (
 							SELECT TOP (1) @FacilityId
 							FROM App.Facility
-							WHERE Facilityname = @Facilityname
+							WHERE FacilityName = @FacilityName
 						);
 		RETURN;
 	END;
@@ -31,17 +31,17 @@ BEGIN
 		BEGIN TRANSACTION @StoredProcedureName
 			INSERT INTO App.Facility
 			(
-				Facilityname,
+				FacilityName,
 				AddressId
 			)
 			VALUES
 			(
-				@Facilityname,
+				@FacilityName,
 				@AddressId
 			)
 
 			SET @FacilityId = SCOPE_IDENTITY();
-			PRINT CONCAT(@Facilityname, ' added successfully!');
+			PRINT CONCAT(@FacilityName, ' added successfully!');
 		COMMIT TRANSACTION @StoredProcedureName;
 	END TRY
 

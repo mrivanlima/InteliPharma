@@ -13,13 +13,6 @@ BEGIN
 	DECLARE @ErrorMessage			VARCHAR (100) = CONCAT('Error ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR (100);
 
-
-	/*IF NOT EXISTS (SELECT * FROM App.FaciltiyContact WHERE IndicationDescription = @IndicationDescription)
-	BEGIN
-		SET @ErrorMessage = CONCAT(@IndicationId, ' not found!');
-		THROW 50005, @ErrorMessage, 1;
-	END*/
-
 	BEGIN TRY
 		BEGIN TRANSACTION @StoredProcedureName
 

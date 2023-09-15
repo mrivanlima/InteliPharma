@@ -1,7 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_FacilityUpdateById
 	@FacilityId	INT,
-	@Facilityname	VARCHAR(100)	= NULL,
+	@FacilityName	VARCHAR(100)	= NULL,
 	@AddressId	INT					= NULL
 AS
 BEGIN
@@ -13,9 +13,9 @@ BEGIN
 	DECLARE @ErrorMessage			VARCHAR (100) = CONCAT('Error ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR (100);
 
-	SET @Facilityname = TRIM(@Facilityname);
+	SET @FacilityName = TRIM(@FacilityName);
 
-	IF NOT EXISTS (SELECT * FROM App.Facility WHERE Facilityname = @Facilityname)
+	IF NOT EXISTS (SELECT * FROM App.Facility WHERE FacilityName = @FacilityName)
 	BEGIN
 		SET @ErrorMessage = CONCAT(@FacilityId, ' not found!');
 		THROW 50005, @ErrorMessage, 1;
@@ -25,12 +25,12 @@ BEGIN
 		BEGIN TRANSACTION @StoredProcedureName
 
 			UPDATE f
-			SET Facilityname = @Facilityname,
+			SET FacilityName = @FacilityName,
 				AddressId = @AddressId
 			FROM App.Facility f
 			WHERE FacilityId = @FacilityId
 
-			PRINT CONCAT(@Facilityname, ' updated successfully!');
+			PRINT CONCAT(@FacilityName, ' updated successfully!');
 		COMMIT TRANSACTION @StoredProcedureName
 	END TRY
 
