@@ -1,7 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DosageCreate
-	@DosageId INT					= NULL OUTPUT,
-	@DosageValue VARCHAR(100)		NOT NULL
+	@DosageId	INT					= NULL OUTPUT,
+	@DosageValue	VARCHAR(100)
 AS
 BEGIN
 	

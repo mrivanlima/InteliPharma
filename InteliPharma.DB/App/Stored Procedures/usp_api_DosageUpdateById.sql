@@ -1,7 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DosageUpdateById
-	@DosageId INT,
-	@DosageValue VARCHAR(100)
+	@DosageId	INT,
+	@DosageValue	VARCHAR(100)
 AS
 BEGIN
 

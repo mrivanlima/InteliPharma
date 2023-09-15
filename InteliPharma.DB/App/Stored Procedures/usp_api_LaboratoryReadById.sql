@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_LaboratoryReadById
-	@LaboratoryId INT					NOT NULL
+	@LaboratoryId	INT
 AS
 BEGIN
 	SET NOCOUNT ON;

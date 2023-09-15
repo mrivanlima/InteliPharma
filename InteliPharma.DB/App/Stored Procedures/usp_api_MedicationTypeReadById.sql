@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_MedicationTypeReadById
-	@MedicationTypeId TINYINT
+	@MedicationTypeId	TINYINT
 AS
 BEGIN
 	SET NOCOUNT ON;

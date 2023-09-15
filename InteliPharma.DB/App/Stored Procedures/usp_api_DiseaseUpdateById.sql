@@ -1,7 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DiseaseUpdateById
-	@DiseaseId INT,
-	@DieseaseName VARCHAR(50)
+	@DiseaseId	INT,
+	@DiseaseName	VARCHAR(50)	= NULL
 AS
 BEGIN
 
@@ -12,9 +12,9 @@ BEGIN
 	DECLARE @ErrorMessage			VARCHAR (100) = CONCAT('Error ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR (100);
 
-	SET @DieseaseName = TRIM(@DieseaseName);
+	SET @DiseaseName = TRIM(@DiseaseName);
 
-	IF NOT EXISTS (SELECT * FROM App.Disease WHERE DieseaseName = @DieseaseName)
+	IF NOT EXISTS (SELECT * FROM App.Disease WHERE DiseaseName = @DiseaseName)
 	BEGIN
 		SET @ErrorMessage = CONCAT(@DiseaseId, ' not found!');
 		THROW 50005, @ErrorMessage, 1;
@@ -24,11 +24,11 @@ BEGIN
 		BEGIN TRANSACTION @StoredProcedureName
 
 			UPDATE d
-			SET DieseaseName = @DieseaseName
+			SET DiseaseName = @DiseaseName
 			FROM App.Disease d
 			WHERE DiseaseId = @DiseaseId
 
-			PRINT CONCAT(@DieseaseName, ' updated successfully!');
+			PRINT CONCAT(@DiseaseName, ' updated successfully!');
 		COMMIT TRANSACTION @StoredProcedureName
 	END TRY
 

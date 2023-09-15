@@ -1,8 +1,8 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_FacilityContactCreate
-	@FacilityContactId BIGINT	= NULL OUTPUT,
-	@FacilityId INT				NOT NULL,
-	@ContactId BIGINT			= NULL
+	@FacilityContactId	BIGINT	= NULL OUTPUT,
+	@FacilityId	INT,
+	@ContactId	BIGINT			= NULL
 AS
 BEGIN
 	

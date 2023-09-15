@@ -1,10 +1,10 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DistributorCreate
-	@DistributorId INT					= NULL OUTPUT,
-	@DistributorName VARCHAR(500)		NOT NULL,
-	@AddressId INT						NOT NULL,
-	@CNPJ VARCHAR(30)					= NULL,
-	@StateSubscription VARCHAR(50)		= NULL
+	@DistributorId	INT					= NULL OUTPUT,
+	@DistributorName	VARCHAR(500),
+	@AddressId	INT,
+	@CNPJ	VARCHAR(30)					= NULL,
+	@StateSubscription	VARCHAR(50)		= NULL
 AS
 BEGIN
 	

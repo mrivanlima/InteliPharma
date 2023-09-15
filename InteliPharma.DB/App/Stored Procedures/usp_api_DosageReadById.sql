@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DosageReadById
-	@DosageId INT
+	@DosageId	INT
 AS
 BEGIN
 	SET NOCOUNT ON;

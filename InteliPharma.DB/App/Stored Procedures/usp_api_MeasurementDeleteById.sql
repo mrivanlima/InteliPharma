@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_MeasurementDeleteById
-	@MeasurementId INT	NOT NULL
+	@MeasurementId	INT
 AS
 BEGIN
 

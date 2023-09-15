@@ -1,7 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_MeasurementCreate
-	@MeasurementId INT					NOT NULL,
-	@MeasurementName VARCHAR (50)		NULL
+	@MeasurementId	INT					= NULL OUTPUT,
+	@MeasurementName	VARCHAR(50)		= NULL
 AS
 BEGIN
 	

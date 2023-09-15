@@ -1,8 +1,8 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DosageUnitCreate
-	@DosageUnitId SMALLINT			= NULL OUTPUT,
-	@UnitName VARCHAR(40)			= NULL,
-	@UnitAbbrev VARCHAR(5)			= NULL
+	@DosageUnitId	SMALLINT	= NULL OUTPUT,
+	@UnitName	VARCHAR(40)		= NULL,
+	@UnitAbbrev	VARCHAR(5)		= NULL
 AS
 BEGIN
 	

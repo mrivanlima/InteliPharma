@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_MedicationTypeDeleteById
-	@MedicationTypeId TINYINT
+	@MedicationTypeId	TINYINT
 AS
 BEGIN
 

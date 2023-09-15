@@ -1,7 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DrugUpdateById
-	@DrugId INT,
-	@DrugName VARCHAR(50)
+	@DrugId	INT,
+	@DrugName	VARCHAR(50)
 AS
 BEGIN
 

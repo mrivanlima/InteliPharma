@@ -1,7 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DiseaseCreate
-	@DiseaseId INT					= NULL OUTPUT,
-	@DieseaseName VARCHAR(50)		= NULL
+	@DiseaseId	INT				= NULL OUTPUT,
+	@DiseaseName	VARCHAR(50)	= NULL
 AS
 BEGIN
 	
@@ -12,16 +12,16 @@ BEGIN
 	DECLARE @ErrorMessage			VARCHAR(100) = CONCAT('Error ', @StoredProcedureName);
 	DECLARE @WarningMessage			VARCHAR(100);
 
-	SET @DieseaseName = TRIM(@DieseaseName);
+	SET @DiseaseName = TRIM(@DiseaseName);
 
-	IF EXISTS (SELECT * FROM App.Disease WHERE DieseaseName = @DieseaseName)
+	IF EXISTS (SELECT * FROM App.Disease WHERE DiseaseName = @DiseaseName)
 	BEGIN
-		SET @WarningMessage = CONCAT(@DieseaseName, ' already exists!');
+		SET @WarningMessage = CONCAT(@DiseaseName, ' already exists!');
 		PRINT @WarningMessage;
 		SET @DiseaseId = (
 							SELECT TOP (1) @DiseaseId
 							FROM App.Disease
-							WHERE DieseaseName = @DieseaseName
+							WHERE DiseaseName = @DiseaseName
 						);
 		RETURN;
 	END;
@@ -30,15 +30,15 @@ BEGIN
 		BEGIN TRANSACTION @StoredProcedureName
 			INSERT INTO App.Disease
 			(
-				DieseaseName
+				DiseaseName
 			)
 			VALUES
 			(
-				@DieseaseName
+				@DiseaseName
 			)
 
 			SET @DiseaseId = SCOPE_IDENTITY();
-			PRINT CONCAT(@DieseaseName, ' added successfully!');
+			PRINT CONCAT(@DiseaseName, ' added successfully!');
 		COMMIT TRANSACTION @StoredProcedureName;
 	END TRY
 

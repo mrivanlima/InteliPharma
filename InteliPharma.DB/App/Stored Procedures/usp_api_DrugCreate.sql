@@ -1,7 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DrugCreate
-	@DrugId INT					= NULL OUTPUT,
-	@DrugName VARCHAR(50)		= NULL
+	@DrugId	INT				= NULL OUTPUT,
+	@DrugName	VARCHAR(50)
 AS
 BEGIN
 	

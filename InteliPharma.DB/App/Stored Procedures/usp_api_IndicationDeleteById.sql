@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_IndicationDeleteById
-	@IndicationId INT						NOT NULL
+	@IndicationId	INT
 AS
 BEGIN
 

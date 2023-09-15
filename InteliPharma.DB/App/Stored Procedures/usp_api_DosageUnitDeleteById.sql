@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DosageUnitDeleteById
-	@DosageUnitId SMALLINT
+	@DosageUnitId	SMALLINT
 AS
 BEGIN
 

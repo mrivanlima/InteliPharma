@@ -1,11 +1,11 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_LaboratoryCreate
-	@LaboratoryId INT					NOT NULL,
-	@LaboratoryName VARCHAR(500)		NOT NULL,
-	@LaboratoryNameASCII VARCHAR(500)	NOT NULL,
-	@AddressId INT						NULL,
-	@CNPJ VARCHAR(30)					NULL,
-	@StateSubscription VARCHAR(50)		NULL
+	@LaboratoryId	INT						= NULL OUTPUT,
+	@LaboratoryName	VARCHAR(500),
+	@LaboratoryNameASCII	VARCHAR(500),
+	@AddressId	INT							= NULL,
+	@CNPJ	VARCHAR(30)						= NULL,
+	@StateSubscription	VARCHAR(50)			= NULL
 AS
 BEGIN
 	

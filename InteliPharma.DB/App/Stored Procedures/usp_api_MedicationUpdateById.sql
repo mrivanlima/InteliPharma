@@ -1,17 +1,17 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_MedicationUpdateById
-	@MedicationId INT					NOT NULL,
-	@DrugId INT							NOT NULL,
-	@ClassificationId TINYINT			NOT NULL,
-	@ManufacturerId SMALLINT			NOT NULL,
-	@MedicationTypeId TINYINT			NOT NULL,
-	@AgeUsageId INT						NOT NULL,
-	@PharmaceuticalAdministrationId INT	NOT NULL,
-	@PharmaceuticalFormId INT			NOT NULL,
-	@ActivePrincipleId INT				NOT NULL,
-	@IndicationId INT					NOT NULL,
-	@AgeUsageDescription VARCHAR(100)	NULL,
-	@Threshold VARCHAR(100)				NULL
+	@MedicationId	INT,
+	@DrugId	INT,
+	@ClassificationId	TINYINT,
+	@ManufacturerId	SMALLINT,
+	@MedicationTypeId	TINYINT,
+	@AgeUsageId	INT,
+	@PharmaceuticalAdministrationId	INT,
+	@PharmaceuticalFormId	INT,
+	@ActivePrincipleId	INT,
+	@IndicationId	INT,
+	@AgeUsageDescription	VARCHAR(100)	= NULL,
+	@Threshold	VARCHAR(100)				= NULL
 AS
 BEGIN
 

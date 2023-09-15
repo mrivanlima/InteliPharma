@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_ManufacturerReadById
-	@ManufacturerId SMALLINT					NOT NULL
+	@ManufacturerId	SMALLINT
 AS
 BEGIN
 	SET NOCOUNT ON;

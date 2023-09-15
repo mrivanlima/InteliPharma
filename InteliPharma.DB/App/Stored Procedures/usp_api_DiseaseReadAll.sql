@@ -6,6 +6,6 @@ BEGIN
 	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 
 	SELECT	DiseaseId,
-			DieseaseName
+			DiseaseName
 	FROM App.Disease;
 END;

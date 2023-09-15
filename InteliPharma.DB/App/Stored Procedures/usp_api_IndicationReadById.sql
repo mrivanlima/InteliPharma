@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_IndicationReadById
-	@IndicationId INT						NOT NULL
+	@IndicationId	INT
 AS
 BEGIN
 	SET NOCOUNT ON;

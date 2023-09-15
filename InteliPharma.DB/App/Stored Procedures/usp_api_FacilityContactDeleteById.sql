@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_FacilityContactDeleteById
-	@FacilityContactId BIGINT
+	@FacilityContactId	BIGINT
 AS
 BEGIN
 

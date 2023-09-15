@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DrugDeleteById
-	@DrugId INT
+	@DrugId	INT
 AS
 BEGIN
 

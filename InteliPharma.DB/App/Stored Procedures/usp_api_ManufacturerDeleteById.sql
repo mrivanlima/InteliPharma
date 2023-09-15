@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_ManufacturerDeleteById
-	@ManufacturerId SMALLINT					NOT NULL
+	@ManufacturerId	SMALLINT
 AS
 BEGIN
 

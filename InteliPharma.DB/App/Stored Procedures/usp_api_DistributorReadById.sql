@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DistributorReadById
-	@DistributorId INT
+	@DistributorId	INT
 AS
 BEGIN
 	SET NOCOUNT ON;

@@ -1,8 +1,8 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_FacilityUpdateById
-	@FacilityId INT				,
-	@Facilityname VARCHAR(100)	= NULL,
-	@AddressId INT				= NULL
+	@FacilityId	INT,
+	@Facilityname	VARCHAR(100)	= NULL,
+	@AddressId	INT					= NULL
 AS
 BEGIN
 

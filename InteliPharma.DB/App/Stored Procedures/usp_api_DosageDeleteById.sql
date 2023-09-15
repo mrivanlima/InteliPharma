@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DosageDeleteById
-	@DosageId INT
+	@DosageId	INT
 AS
 BEGIN
 

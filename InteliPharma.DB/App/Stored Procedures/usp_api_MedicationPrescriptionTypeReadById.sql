@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_MedicationPrescriptionTypeReadById
-	@MedicationPrescriptionTypeId BIGINT
+	@MedicationPrescriptionTypeId	BIGINT
 AS
 BEGIN
 	SET NOCOUNT ON;

@@ -1,8 +1,8 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DosageUnitUpdateById
-	@DosageUnitId SMALLINT			,
-	@UnitName VARCHAR(40)			= NULL,
-	@UnitAbbrev VARCHAR(5)			= NULL
+	@DosageUnitId	SMALLINT,
+	@UnitName	VARCHAR(40)		= NULL,
+	@UnitAbbrev	VARCHAR(5)		= NULL
 AS
 BEGIN
 

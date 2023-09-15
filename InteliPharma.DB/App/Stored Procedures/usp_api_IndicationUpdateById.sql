@@ -1,7 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_IndicationUpdateById
-	@IndicationId INT						NOT NULL,
-	@IndicationDescription VARCHAR(100)		NOT NULL
+	@IndicationId	INT,
+	@IndicationDescription	VARCHAR(100)
 AS
 BEGIN
 

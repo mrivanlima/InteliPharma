@@ -1,8 +1,8 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_ManufacturerUpdateById
-	@ManufacturerId SMALLINT					NOT NULL,
-	@ManufacturerName VARCHAR (100)				NOT NULL,
-	@ManufacturerPhoneNumber VARCHAR(13)		NULL
+	@ManufacturerId	SMALLINT,
+	@ManufacturerName	VARCHAR(100),
+	@ManufacturerPhoneNumber	VARCHAR(13)	= NULL
 AS
 BEGIN
 

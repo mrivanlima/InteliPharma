@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DrugReadById
-	@DrugId INT
+	@DrugId	INT
 AS
 BEGIN
 	SET NOCOUNT ON;

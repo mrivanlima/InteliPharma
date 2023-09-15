@@ -1,6 +1,6 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DistributorDeleteById
-	@DistributorId INT
+	@DistributorId	INT
 AS
 BEGIN
 
