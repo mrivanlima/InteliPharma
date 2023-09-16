@@ -66,7 +66,7 @@ namespace InteliPharma.API.Services
                 while (sqlDr.Read())
                 {
                     product.ProductId = productId;
-                    product.ProductBarCode = (DateTime)sqlDr["ProductBarCode"];
+                    product.ProductBarCode = (String)sqlDr["ProductBarCode"];
                     product.Price = (decimal)sqlDr["Price"];
                     product.Active = (bool)sqlDr["Active"];
                 }
@@ -105,7 +105,7 @@ namespace InteliPharma.API.Services
                 {
                     product = new Product();
                     product.ProductId = (int)sqlDr["ProductId"];
-                    product.ProductBarCode = (DateTime)sqlDr["ProductBarCode"];
+                    product.ProductBarCode = (String)sqlDr["ProductBarCode"];
                     product.Price = (decimal)sqlDr["Price"];
                     product.Active = (bool)sqlDr["Active"];
                     products.Add(product);

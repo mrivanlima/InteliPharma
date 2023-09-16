@@ -10,7 +10,7 @@ namespace InteliPharma.Library.Entities
     {
         public Product() { }
         public int ProductId { get; set; }
-        public DateTime ProductBarCode { get; set; }
+        public String ProductBarCode { get; set; } = String.Empty;
         public decimal Price { get; set; }
         public bool Active { get; set; }
     }

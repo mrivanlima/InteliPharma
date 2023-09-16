@@ -1,7 +1,7 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_ProductCreate
-	@ProductId      INT             NOT NULL,
-    @ProductBarCode DATETIME        NULL,
+	@ProductId      INT       =     NULL OUTPUT,
+    @ProductBarCode VARCHAR (13)    NULL,
     @Price          DECIMAL (10, 2) NULL,
     @Active         BIT             NULL
 AS
@@ -20,14 +20,14 @@ BEGIN
 		BEGIN TRANSACTION @StoredProcedureName
 			INSERT INTO App.Product
 			(
-				ProductId,
+				
 				ProductBarCode,
 				Price,
 				Active
 			)
 			VALUES
 			(
-				@ProductId,
+				
 				@ProductBarCode,
 				@Price,
 				@Active
