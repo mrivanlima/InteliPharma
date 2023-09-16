@@ -1,0 +1,12 @@
+﻿
+CREATE   PROCEDURE App.usp_api_DosageUnitReadAll
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+	SELECT	DosageUnitId,
+			UnitName,
+			UnitAbbrev
+	FROM App.DosageUnit;
+END;

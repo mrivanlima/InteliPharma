@@ -1,6 +1,6 @@
 ﻿
-CREATE PROCEDURE App.usp_api_MedicationTypeReadById
-	@MedicationTypeId TINYINT
+CREATE   PROCEDURE App.usp_api_MedicationTypeReadById
+	@MedicationTypeId	TINYINT
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -8,6 +8,6 @@ BEGIN
 
 	SELECT	MedicationTypeId,
 			MedicationTypeName
-	FROM App.MedicationTypeId
+	FROM App.MedicationType
 	WHERE MedicationTypeId = @MedicationTypeId;
 END;

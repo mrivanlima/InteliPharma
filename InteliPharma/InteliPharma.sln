@@ -13,7 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteliPharma.Console", "..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntiPharma.Maui", "..\IntiPharma.Maui\IntiPharma.Maui.csproj", "{E3D11848-1B7E-4DCE-801D-B5531442DEEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteliPharma.Blazor", "..\InteliPharma.Blazor\InteliPharma.Blazor.csproj", "{F3230A61-8D5F-4726-9B71-620599676F89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteliPharma.Blazor", "..\InteliPharma.Blazor\InteliPharma.Blazor.csproj", "{F3230A61-8D5F-4726-9B71-620599676F89}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PagesDemo", "..\..\PagesDemo\PagesDemo.csproj", "{F20612F7-D300-4A36-8835-331505FF9DA5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackLayoutDemo", "..\..\StackLayoutDemo\StackLayoutDemo.csproj", "{0B8F9EF7-AAFE-4C58-812B-1E9C90125297}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridDemo", "..\..\GridDemo\GridDemo.csproj", "{9C42D6FE-4E4C-47CE-B6A4-7CFF39F6C059}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +55,24 @@ Global
 		{F3230A61-8D5F-4726-9B71-620599676F89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3230A61-8D5F-4726-9B71-620599676F89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3230A61-8D5F-4726-9B71-620599676F89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F20612F7-D300-4A36-8835-331505FF9DA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20612F7-D300-4A36-8835-331505FF9DA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20612F7-D300-4A36-8835-331505FF9DA5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F20612F7-D300-4A36-8835-331505FF9DA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20612F7-D300-4A36-8835-331505FF9DA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F20612F7-D300-4A36-8835-331505FF9DA5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0B8F9EF7-AAFE-4C58-812B-1E9C90125297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B8F9EF7-AAFE-4C58-812B-1E9C90125297}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B8F9EF7-AAFE-4C58-812B-1E9C90125297}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0B8F9EF7-AAFE-4C58-812B-1E9C90125297}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B8F9EF7-AAFE-4C58-812B-1E9C90125297}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B8F9EF7-AAFE-4C58-812B-1E9C90125297}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9C42D6FE-4E4C-47CE-B6A4-7CFF39F6C059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C42D6FE-4E4C-47CE-B6A4-7CFF39F6C059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C42D6FE-4E4C-47CE-B6A4-7CFF39F6C059}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9C42D6FE-4E4C-47CE-B6A4-7CFF39F6C059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C42D6FE-4E4C-47CE-B6A4-7CFF39F6C059}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C42D6FE-4E4C-47CE-B6A4-7CFF39F6C059}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

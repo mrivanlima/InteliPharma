@@ -1,5 +1,6 @@
-﻿CREATE   PROCEDURE App.usp_api_ActivePrincipleUpdateById
-	@ActivePrincipleId INT = NULL OUTPUT,
+﻿
+CREATE   PROCEDURE App.usp_api_ActivePrincipleUpdateById
+	@ActivePrincipleId INT,
 	@ActivePrincipleName VARCHAR(400),
 	@ActivePrincipleASCII VARCHAR(400)
 AS

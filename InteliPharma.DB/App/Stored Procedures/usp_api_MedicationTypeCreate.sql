@@ -1,6 +1,7 @@
-﻿CREATE   PROCEDURE App.usp_api_MedicationTypeCreate
-	@MedicationTypeId	TINYINT			NOT NULL,
-	@MedicationTypeName	VARCHAR (20)	NOT NULL
+﻿
+CREATE   PROCEDURE App.usp_api_MedicationTypeCreate
+	@MedicationTypeId	TINYINT			= NULL OUTPUT,
+	@MedicationTypeName	VARCHAR(20)
 AS
 BEGIN
 	

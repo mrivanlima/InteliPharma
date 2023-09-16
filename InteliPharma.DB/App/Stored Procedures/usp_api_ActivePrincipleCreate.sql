@@ -1,10 +1,12 @@
-﻿CREATE   PROCEDURE usp_api_ActivePrincipleCreate
+﻿
+CREATE   PROCEDURE usp_api_ActivePrincipleCreate
 	@ActivePrincipleId INT = NULL OUTPUT,
 	@ActivePrincipleName VARCHAR(400),
 	@ActivePrincipleASCII VARCHAR(400)
 AS
 BEGIN
 	
+
 	SET NOCOUNT ON;
 	SET XACT_ABORT ON;
 
@@ -36,7 +38,7 @@ BEGIN
 			VALUES
 			(
 				@ActivePrincipleName,
-				@ActivePrincipleName
+				[App].[replace_special_char](@ActivePrincipleName)
 			)
 
 		SET @ActivePrincipleId = SCOPE_IDENTITY();

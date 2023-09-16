@@ -1,0 +1,13 @@
+﻿
+CREATE   PROCEDURE App.usp_api_DosageReadById
+	@DosageId	INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+	SELECT	DosageId,
+			DosageValue
+	FROM App.Dosage
+	WHERE DosageId = @DosageId;
+END;

@@ -4,7 +4,8 @@ CREATE   PROCEDURE App.usp_api_StateCreate
 	@StateAbbreviation CHAR(2),
 	@Longitude	DECIMAL(12,9) = NULL,
 	@Latitude	DECIMAL(12,9) = NULL,
-	@StateId	TINYINT = NULL OUTPUT
+	@StateId	TINYINT = NULL OUTPUT,
+	@Error		BIT = 0 OUTPUT
 AS
 BEGIN
 
@@ -59,6 +60,8 @@ BEGIN
 		BEGIN
 			ROLLBACK TRANSACTION @StoredProcedureName;
 		END;
+
+		SET @Error = 1;
 
 		INSERT INTO [log].[ErrorLog] 
 		(

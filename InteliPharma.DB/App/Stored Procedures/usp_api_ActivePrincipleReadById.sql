@@ -1,5 +1,5 @@
 ﻿
-CREATE PROCEDURE App.usp_api_ActivePrincipleReadById
+CREATE   PROCEDURE App.usp_api_ActivePrincipleReadById
 	@ActivePrincipleId INT
 AS
 BEGIN

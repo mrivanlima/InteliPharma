@@ -1,0 +1,13 @@
+﻿
+CREATE   PROCEDURE App.usp_api_DrugReadById
+	@DrugId	INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+	SELECT	DrugId,
+			DrugName
+	FROM App.Drug
+	WHERE DrugId = @DrugId;
+END;

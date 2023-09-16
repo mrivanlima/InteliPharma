@@ -1,6 +1,14 @@
-﻿CREATE PROCEDURE App.usp_api_MedicationPrescriptionTypeReadAll
-	@param1 int = 0,
-	@param2 int
+﻿
+CREATE   PROCEDURE App.usp_api_MedicationPrescriptionTypeReadAll
 AS
-	SELECT @param1, @param2
-RETURN 0
+BEGIN
+	SET NOCOUNT ON;
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+	SELECT	MedicationId,
+			PrescriptionId,
+			PrescriptionTypeId,
+			Quantity,
+			MedicationPrescriptionTypeId
+	FROM App.MedicationPrescriptionType;
+END;

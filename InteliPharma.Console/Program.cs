@@ -46,36 +46,40 @@ var dbContext = new ApplicationDbContext(dbOptions);
 //d.AnvisaConsultaComercios("7327886", dbContext);
 
 
-List<string> ceps = new List<string>();
+//List<string> ceps = new List<string>();
 
-using (var fileStream = File.OpenRead(@"C:\Users\IvanLima\Documents\ceps\PR\PR.txt"))
-using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, BufferSize))
-{
-    String line;
-    while ((line = streamReader.ReadLine()) != null)
-    {
-        ceps.Add(line);
-    }
-}
+//using (var fileStream = File.OpenRead(@"C:\Users\IvanLima\Documents\ceps\SP\SP.txt"))
+//using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, BufferSize))
+//{
+//    String line;
+//    while ((line = streamReader.ReadLine()) != null)
+//    {
+//        ceps.Add(line);
+//    }
+//}
 
-var cs = dbContext.Ceps.Select(s => s.cep).ToList();
-ceps = ceps.Except(cs).ToList();
+//var cs = dbContext.Ceps.Select(s => s.cep).ToList();
+//ceps = ceps.Except(cs).ToList();
 
-BuscarCep cep = new BuscarCep();
+//List<string> allLinesText = File.ReadAllLines(@"C:\Users\IvanLima\Documents\except\except.txt").ToList();
+//ceps = ceps.Except(allLinesText).ToList();
 
-var co = 0;
-foreach (var c in ceps)
-{
-    cep.CallWebApi(c, dbContext);
-    co = co + 1;
+//BuscarCep cep = new BuscarCep();
 
-    Console.WriteLine("Number is: " + co);
+//var co = 0;
+//foreach (var c in ceps)
+//{
 
-    if (co == 10000)
-    {
-        break;
-    }
-}
+//    cep.CallWebApi(c, dbContext);
+//    co = co + 1;
+
+//    Console.WriteLine("Number is: " + co);
+
+//    if (co == 10000)
+//    {
+//        break;
+//    }
+//}
 
 Connect connect = new Connect();
 var connection = connect.GetContext();
