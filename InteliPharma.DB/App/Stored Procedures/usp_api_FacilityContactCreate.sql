@@ -2,7 +2,8 @@
 CREATE   PROCEDURE App.usp_api_FacilityContactCreate
 	@FacilityContactId	BIGINT	= NULL OUTPUT,
 	@FacilityId	INT,
-	@ContactId	BIGINT			= NULL
+	@ContactId	BIGINT			= NULL,
+	@Error		BIT = 0 OUTPUT
 AS
 BEGIN
 	
@@ -54,6 +55,8 @@ BEGIN
 		BEGIN
 			ROLLBACK TRANSACTION @StoredProcedureName;
 		END;
+
+		SET @Error = 1;
 
 		INSERT INTO [log].[ErrorLog]
 		(

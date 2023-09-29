@@ -5,7 +5,8 @@ CREATE   PROCEDURE App.usp_api_LaboratoryCreate
 	@LaboratoryNameASCII	VARCHAR(500),
 	@AddressId	INT							= NULL,
 	@CNPJ	VARCHAR(30)						= NULL,
-	@StateSubscription	VARCHAR(50)			= NULL
+	@StateSubscription	VARCHAR(50)			= NULL,
+	@Error		BIT = 0 OUTPUT
 AS
 BEGIN
 	
@@ -60,6 +61,8 @@ BEGIN
 		BEGIN
 			ROLLBACK TRANSACTION @StoredProcedureName;
 		END;
+
+		SET @Error = 1;
 
 		INSERT INTO [log].[ErrorLog]
 		(

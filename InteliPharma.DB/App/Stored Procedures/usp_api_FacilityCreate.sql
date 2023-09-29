@@ -2,7 +2,8 @@
 CREATE   PROCEDURE App.usp_api_FacilityCreate
 	@FacilityId	INT					= NULL OUTPUT,
 	@FacilityName	VARCHAR(100)	= NULL,
-	@AddressId	INT					= NULL
+	@AddressId	INT					= NULL,
+	@Error		BIT = 0 OUTPUT
 AS
 BEGIN
 	
@@ -51,6 +52,8 @@ BEGIN
 		BEGIN
 			ROLLBACK TRANSACTION @StoredProcedureName;
 		END;
+
+		SET @Error = 1;
 
 		INSERT INTO [log].[ErrorLog]
 		(

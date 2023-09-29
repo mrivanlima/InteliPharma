@@ -1,7 +1,8 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_MedicationTypeCreate
 	@MedicationTypeId	TINYINT			= NULL OUTPUT,
-	@MedicationTypeName	VARCHAR(20)
+	@MedicationTypeName	VARCHAR(20),
+	@Error		BIT = 0 OUTPUT
 AS
 BEGIN
 	
@@ -50,6 +51,8 @@ BEGIN
 		BEGIN
 			ROLLBACK TRANSACTION @StoredProcedureName;
 		END;
+
+		SET @Error = 1;
 
 		INSERT INTO [log].[ErrorLog]
 		(

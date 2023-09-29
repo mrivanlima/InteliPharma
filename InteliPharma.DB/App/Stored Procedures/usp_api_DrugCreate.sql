@@ -1,7 +1,8 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DrugCreate
 	@DrugId	INT				= NULL OUTPUT,
-	@DrugName	VARCHAR(50)
+	@DrugName	VARCHAR(50),
+	@Error		BIT = 0 OUTPUT
 AS
 BEGIN
 	
@@ -48,6 +49,8 @@ BEGIN
 		BEGIN
 			ROLLBACK TRANSACTION @StoredProcedureName;
 		END;
+
+		SET @Error = 1;
 
 		INSERT INTO [log].[ErrorLog]
 		(

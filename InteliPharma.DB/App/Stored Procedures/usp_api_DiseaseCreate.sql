@@ -1,7 +1,8 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_DiseaseCreate
 	@DiseaseId	INT				= NULL OUTPUT,
-	@DiseaseName	VARCHAR(50)	= NULL
+	@DiseaseName	VARCHAR(50)	= NULL,
+	@Error		BIT = 0 OUTPUT
 AS
 BEGIN
 	
@@ -48,6 +49,8 @@ BEGIN
 		BEGIN
 			ROLLBACK TRANSACTION @StoredProcedureName;
 		END;
+
+		SET @Error = 1;
 
 		INSERT INTO [log].[ErrorLog]
 		(

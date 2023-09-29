@@ -11,7 +11,8 @@ CREATE   PROCEDURE App.usp_api_MedicationCreate
 	@ActivePrincipleId	INT,
 	@IndicationId	INT,
 	@AgeUsageDescription	VARCHAR(100)	= NULL,
-	@Threshold	VARCHAR(100)				= NULL
+	@Threshold	VARCHAR(100)				= NULL,
+	@Error		BIT = 0 OUTPUT
 AS
 BEGIN
 
@@ -95,6 +96,8 @@ BEGIN
 		BEGIN 
 			ROLLBACK TRANSACTION @StoredProcedureName;
 		END;
+
+		SET @Error = 1;
 
 		INSERT INTO [log].[ErrorLog]
 		(

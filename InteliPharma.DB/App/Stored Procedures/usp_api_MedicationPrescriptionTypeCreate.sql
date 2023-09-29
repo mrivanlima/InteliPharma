@@ -4,7 +4,8 @@ CREATE   PROCEDURE App.usp_api_MedicationPrescriptionTypeCreate
 	@PrescriptionId	BIGINT,
 	@PrescriptionTypeId	TINYINT				= NULL,
 	@Quantity	TINYINT						= NULL,
-	@MedicationPrescriptionTypeId	BIGINT	= NULL OUTPUT
+	@MedicationPrescriptionTypeId	BIGINT	= NULL OUTPUT,
+	@Error		BIT = 0 OUTPUT
 AS
 BEGIN
 
@@ -63,6 +64,8 @@ BEGIN
 		BEGIN 
 			ROLLBACK TRANSACTION @StoredProcedureName;
 		END;
+
+		SET @Error = 1;
 
 		INSERT INTO [log].[ErrorLog]
 		(

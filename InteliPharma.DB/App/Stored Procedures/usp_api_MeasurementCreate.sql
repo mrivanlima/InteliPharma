@@ -1,7 +1,8 @@
 ﻿
 CREATE   PROCEDURE App.usp_api_MeasurementCreate
 	@MeasurementId	INT					= NULL OUTPUT,
-	@MeasurementName	VARCHAR(50)		= NULL
+	@MeasurementName	VARCHAR(50)		= NULL,
+	@Error		BIT = 0 OUTPUT
 AS
 BEGIN
 	
@@ -50,6 +51,8 @@ BEGIN
 		BEGIN
 			ROLLBACK TRANSACTION @StoredProcedureName;
 		END;
+
+		SET @Error = 1;
 
 		INSERT INTO [log].[ErrorLog]
 		(
