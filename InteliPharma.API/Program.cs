@@ -21,6 +21,7 @@ builder.Services.AddScoped<IDbConn, DbConnection>();
 
 builder.Services.AddScoped<IDiseaseRepository, DiseaseRepository>();
 builder.Services.AddScoped<IDistributorRepository, DistributorRepository>();
+builder.Services.AddScoped<IDosageRepository, DosageRepository>();
 builder.Services.AddScoped<INeighborhoodRepository, NeighborhoodRepository>();
 builder.Services.AddScoped<IOperationNatureRepository, OperationNatureRepository>();
 builder.Services.AddScoped<IOrderDeliveryRepository, OrderDeliveryRepository>();
